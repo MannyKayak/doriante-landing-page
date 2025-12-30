@@ -6,9 +6,11 @@ import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
 import './styles.css'
-import { HeroSection } from '../../components/HeroSection'
+import { RoomsSection } from '@/components/RoomsSection'
+import { FormSection } from '@/components/FormSection'
+import { HeroSection } from '@/components/HeroSection'
 import { ExperiencesSection } from '@/components/ExperiencesSection'
-import { RoomdSection } from '@/components/RoomsSection/RoomsSection'
+import { OurStorySection } from '@/components/OurStorySection'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -22,8 +24,9 @@ export default async function HomePage() {
     <div className="home">
       <HeroSection />
       <ExperiencesSection />
-      <RoomdSection />
-
+      <RoomsSection />
+      <FormSection />
+      <OurStorySection />
       <div className="content">
         <div className="links">
           <a

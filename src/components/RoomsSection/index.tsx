@@ -1,7 +1,7 @@
 import React, { JSX } from 'react'
 import Image from 'next/image'
 
-export const RoomdSection = (): JSX.Element => {
+export const RoomsSection = (): JSX.Element => {
   const contentData = {
     heading: 'Where Art Lives',
     paragraphs: [

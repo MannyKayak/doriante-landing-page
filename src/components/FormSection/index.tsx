@@ -1,6 +1,6 @@
 import React, { JSX, useState } from 'react'
 
-export const Frame = (): JSX.Element => {
+export const FormSection = (): JSX.Element => {
   const [email, setEmail] = useState('')
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

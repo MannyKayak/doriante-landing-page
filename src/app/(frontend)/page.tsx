@@ -6,6 +6,9 @@ import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
 import './styles.css'
+import { HeroSection } from '../../components/HeroSection'
+import { ExperiencesSection } from '@/components/ExperiencesSection'
+import { RoomdSection } from '@/components/RoomsSection/RoomsSection'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -17,18 +20,11 @@ export default async function HomePage() {
 
   return (
     <div className="home">
+      <HeroSection />
+      <ExperiencesSection />
+      <RoomdSection />
+
       <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
         <div className="links">
           <a
             className="admin"
@@ -47,12 +43,6 @@ export default async function HomePage() {
             Documentation
           </a>
         </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
       </div>
     </div>
   )

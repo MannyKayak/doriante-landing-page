@@ -1,62 +1,69 @@
-import React, { JSX, useState } from 'react'
+import React from 'react'
 
-export const Frame = (): JSX.Element => {
-  const [email, setEmail] = useState('')
+type OurStorySectionProps = {
+  title?: string
+  paragraphs?: string[]
+  imageSrc: string
+  imageAlt?: string
+  className?: string
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log('Email submitted:', email)
-  }
+  /** Personalizzazione colori (hex o classi Tailwind arbitrarie) */
+  bgColorClass?: string // es: "bg-[#041F33]"
+  titleColorClass?: string // es: "text-[#D6B56B]"
+  textColorClass?: string // es: "text-white/90"
+}
 
+export function OurStorySection({
+  title = 'Our Story',
+  paragraphs = [
+    "Nestled in the picturesque hills of Tuscany, Villa Toscana was born from a passion for authentic Italian hospitality and a deep appreciation for the region's rich cultural heritage.",
+    'Our family-owned estate has been lovingly restored to preserve its historic charm while offering modern comforts. The original stone walls, wooden beams, and terracotta floors tell the story of generations past, creating an atmosphere of timeless elegance.',
+  ],
+  imageSrc,
+  imageAlt = 'Our story image',
+  className = '',
+  bgColorClass = 'bg-[#041F33]',
+  titleColorClass = 'text-[#D6B56B]',
+  textColorClass = 'text-white/90',
+}: OurStorySectionProps) {
   return (
-    <div className="bg-white w-full min-w-[1920px] min-h-[874px] relative">
-      <div className="absolute top-0 left-0 w-[1920px] h-[874px] bg-[#eed9a4]" />
+    <section className={`${bgColorClass} ${className}`}>
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+          {/* LEFT */}
+          <div className="max-w-lg">
+            <h2 className={`mb-8 font-serif text-4xl leading-tight md:text-5xl ${titleColorClass}`}>
+              {title}
+            </h2>
 
-      <main className="relative">
-        <header className="absolute top-[179px] left-[469px] w-[986px]">
-          <h1 className="[font-family:'Ogg_TRIAL-Regular',Helvetica] font-normal text-[#001b31] text-[64px] text-center tracking-[0] leading-[64px]">
-            <span className="leading-[43.2px]">
-              Stay In Touch
-              <br />
-            </span>
-
-            <span className="text-4xl">
-              <br />
-              Join our community of art lovers and receive curated updates about exhibitions,
-              cultural events, and exclusive experiences at Doriante and around Lago d&#39;Orta.
-            </span>
-          </h1>
-        </header>
-
-        <form onSubmit={handleSubmit} className="absolute top-[561px] left-[606px]">
-          <div className="flex items-center gap-0">
-            <label htmlFor="email-input" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="email-input"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              aria-required="true"
-              className="w-[393px] h-[52px] bg-white px-4 [font-family:'Arial-Regular',Helvetica] font-normal text-[#001b31] text-base"
-            />
-            <button
-              type="submit"
-              className="w-[292px] h-[62px] bg-[#001b31] rounded-[10px] [font-family:'Arial-Regular',Helvetica] font-normal text-white text-2xl text-center tracking-[0] leading-[normal] whitespace-nowrap ml-[23px] cursor-pointer hover:bg-[#002a47] transition-colors"
-              aria-label="Subscribe to newsletter"
-            >
-              Subscribe
-            </button>
+            <div className={`space-y-8 text-base leading-7 md:text-[15px] ${textColorClass}`}>
+              {paragraphs.map((p, i) => (
+                <p key={i} className="max-w-md">
+                  {p}
+                </p>
+              ))}
+            </div>
           </div>
 
-          <p className="w-[708px] [font-family:'Arial-Regular',Helvetica] font-normal text-[#001b31] text-2xl text-center tracking-[0] leading-[normal] mt-[101px]">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
-        </form>
-      </main>
-    </div>
+          {/* RIGHT */}
+          <div className="md:flex md:justify-end">
+            <div
+              className="w-full max-w-[560px] overflow-hidden bg-white/5"
+              style={{
+                // forma “blob” simile allo screenshot
+                borderRadius: '36px 170px 170px 36px',
+              }}
+            >
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                className="h-[360px] w-full object-cover md:h-[420px]"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

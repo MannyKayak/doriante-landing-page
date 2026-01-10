@@ -17,7 +17,7 @@ export const RoomsSection = (): JSX.Element => {
         <Image
           className="w-full h-full object-cover"
           alt="Doriante hotel room with art and lake view"
-          src={'/aessets/images/room1.png'}
+          src={'/aessets/images/photo1.png'}
           fill
         />
       </section>

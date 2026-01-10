@@ -1,23 +1,51 @@
-import React, { JSX } from 'react'
 import Image from 'next/image'
+import React from 'react'
 
-export const HeroSection = (): JSX.Element => {
+type HeroSectionProps = {
+  logoSrc: string
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ logoSrc }) => {
   return (
-    <main className="w-480 h-270 flex flex-col gap-[277.4px] bg-[url(/pexels-olly-3764202-1.png)] bg-cover bg-position-[50%_50%]">
-      <Image
-        className="ml-61 w-[672.09px] h-[280.44px] mt-[251.2px]"
-        alt="A serene retreat where elegance and art meet to create a slow living experience"
-        width={672}
-        height={280}
-        src={'/assets/images/background_image.png'}
-      />
+    <section className="relative min-h-screen w-full overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/assets/images/backgroundHero.png"
+          alt="background"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-white/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/15" />
+      </div>
 
-      {/* <Image
-        fill
-        className="ml-[66px] w-[1788px] h-[271px] aspect-[6.58]"
-        alt="Doriante positive logotype"
-        src={'/assets/logo/doriante_logo.svg'}
-      /> */}
-    </main>
+      {/* Content */}
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 pt-28 pb-12">
+        <div className="max-w-2xl">
+          <p className="font-serif text-[40px] leading-[1.05] tracking-tight text-[#0b2b3a] md:text-[56px]">
+            <span className="font-semibold">A</span> serene retreat where
+            <br />
+            <span className="font-semibold">elegance and art meet</span>
+            <br />
+            <span className="font-semibold">to create a slow-living</span>
+            <br />
+            <span className="font-semibold">experience.</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Big logo bottom */}
+      <div className="absolute bottom-0 px-20 z-10">
+        <Image
+          src={logoSrc}
+          alt="Logo"
+          width={1400}
+          height={300}
+          className="w-full select-none"
+          draggable={false}
+        />
+      </div>
+    </section>
   )
 }

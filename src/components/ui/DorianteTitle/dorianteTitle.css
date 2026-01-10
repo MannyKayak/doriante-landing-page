@@ -1,0 +1,61 @@
+.h1.doriante-title,
+.h2.doriante-title,
+.h3.doriante-title,
+.h4.doriante-title,
+.h5.doriante-title,
+.h6.doriante-title {
+  font-family: "Fira Sans", serif;
+}
+.h1.doriante-title {
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 1.1em;
+}
+.h2.doriante-title {
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 1.2em;
+}
+.h3.doriante-title {
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1em;
+}
+.h4.doriante-title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1.2em;
+}
+.h5.doriante-title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.1em;
+}
+.h6.doriante-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .h1.doriante-title {
+    font-size: 58px;
+  }
+  .h2.doriante-title {
+    font-size: 44px;
+  }
+  .h3.doriante-title {
+    font-size: 32px;
+  }
+  .h4.doriante-title {
+    font-size: 24px;
+    line-height: 1.2em;
+  }
+  .h5.doriante-title {
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .h6.doriante-title {
+    font-size: 16px;
+  }
+}

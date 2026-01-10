@@ -1,12 +1,13 @@
-import React, { JSX, useState } from 'react'
+"use client";
+import React, { JSX, useState } from "react";
 
 export const FormSection = (): JSX.Element => {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log('Email submitted:', email)
-  }
+    e.preventDefault();
+    console.log("Email submitted:", email);
+  };
 
   return (
     <div className="bg-white w-full min-w-[1920px] min-h-[874px] relative">
@@ -22,13 +23,17 @@ export const FormSection = (): JSX.Element => {
 
             <span className="text-4xl">
               <br />
-              Join our community of art lovers and receive curated updates about exhibitions,
-              cultural events, and exclusive experiences at Doriante and around Lago d&#39;Orta.
+              Join our community of art lovers and receive curated updates about
+              exhibitions, cultural events, and exclusive experiences at
+              Doriante and around Lago d&#39;Orta.
             </span>
           </h1>
         </header>
 
-        <form onSubmit={handleSubmit} className="absolute top-[561px] left-[606px]">
+        <form
+          onSubmit={handleSubmit}
+          className="absolute top-[561px] left-[606px]"
+        >
           <div className="flex items-center gap-0">
             <label htmlFor="email-input" className="sr-only">
               Email address
@@ -58,5 +63,5 @@ export const FormSection = (): JSX.Element => {
         </form>
       </main>
     </div>
-  )
-}
+  );
+};

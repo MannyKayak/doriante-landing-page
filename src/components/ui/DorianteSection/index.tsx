@@ -1,9 +1,15 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 
-type DorianteSectionProps = {
-  children: ReactNode
+type DorianteSectionProps = React.ComponentPropsWithoutRef<'section'>
+
+function cn(...classes: Array<string | undefined | false | null>) {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default function DorianteSection({ children }: DorianteSectionProps) {
-  return <section className=" min-h-screen w-full overflow-hidden px-20">{children}</section>
+export default function DorianteSection({ className, children, ...props }: DorianteSectionProps) {
+  return (
+    <section {...props} className={cn('w-full overflow-hidden px-20', className)}>
+      {children}
+    </section>
+  )
 }

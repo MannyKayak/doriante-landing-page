@@ -7,7 +7,7 @@
   /* Core palette */
   --color-dark: #001b31;
   --color-light: #eed9a4;
-
+  --color-gray: #e5e5e3;
   /* Neutrals */
   --color-black: #000000;
   --color-white: #ffffff;
@@ -21,6 +21,7 @@
   --color-light: var(--color-light);
   --color-black: var(--color-black);
   --color-white: var(--color-white);
+  --color-gray: var(--color-gray);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

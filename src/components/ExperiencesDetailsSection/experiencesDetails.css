@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+  background: var(--color-gray) !important; /* colore pallini inattivi */
+}
+
+/* Bullet attivo */
+.swiper-pagination-bullet-active {
+  background: var(--color-light) !important; /* dorato Doriante */
+}
+
+.doriante-swiper .swiper-pagination {
+  position: relative;
+  bottom: auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}

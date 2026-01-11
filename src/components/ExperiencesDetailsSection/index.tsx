@@ -1,70 +1,55 @@
-import React, { JSX } from "react";
-import Image from "next/image";
-import DorianteText from "../ui/DorianteText";
-import DorianteTitle from "../ui/DorianteTitle";
+'use client'
+import React, { FC, JSX } from 'react'
+import DorianteText from '../ui/DorianteText'
+import DorianteTitle from '../ui/DorianteTitle'
+import DorianteSection from '../ui/DorianteSection'
+import DorianteImage from '../ui/DorianteImage'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
 
-type ExperiencesDetailsCard = {
-  id: number;
-  title: string;
-  image: string;
-  details: string[];
-};
+import './experiencesDetails.css'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { ExperiencesDetailsSectionProp } from '@/types'
 
-export const ExperiencesDetailsSection = (): JSX.Element => {
-  const contentData: ExperiencesDetailsCard[] = [
-    {
-      id: 10,
-      title: "Where Art Lives",
-      image: "/assets/images/room1.png",
-      details: [
-        "Each room at Doriante is a carefully curated gallery space, featuring works by emerging and established artists. Wake up surrounded by beauty, with views of Lago d'Orta stretching beyond your windows.",
-        "Our accommodations blend minimalist Italian design with contemporary comfort, creating spaces that inspire contemplation and connection with the artistic heritage of the region.",
-        "Experience slow living at its finest - where every detail is designed to encourage mindfulness, creativity, and deep restoration.",
-      ],
-    },
-  ];
-
+export const ExperiencesDetailsSection: FC<ExperiencesDetailsSectionProp> = ({
+  contentData,
+}): JSX.Element => {
   return (
-    <section className="w-full flex flex-col bg-background">
-      <div className="w-full flex flex-col bg-background">
-        <Image
-          className="w-full h-full object-cover"
-          alt="Doriante hotel room with art and lake view"
-          src={"/aessets/images/room1.png"}
-          fill
-        />
-      </div>
-
-      <article className="px-20">
-        {contentData.map((content) => (
-          <div
-            key={content.id}
-            className="flex flex-col justify-center items-center"
+    <DorianteSection className="flex flex-col pt-20 ">
+      {contentData.map((content) => (
+        <div key={content.id} className="flex flex-col justify-center items-center">
+          {/* inserire uno slider */}
+          <Swiper
+            modules={[Pagination]}
+            centeredSlides
+            watchOverflow
+            spaceBetween={5}
+            slidesPerView={'auto'}
+            pagination={{ clickable: true, type: 'bullets' }}
+            className="doriante-swiper"
           >
-            <Image
-              src={content.image}
-              alt={content.title}
-              width={1678}
-              height={920}
-            />
-            <DorianteTitle color="light" tag="h1">
-              {content.title}
-            </DorianteTitle>
-            <div>
-              {content.details.map((text, i) => (
-                <DorianteText
-                  key={content.id + i}
-                  color="white"
-                  align="center"
-                  size="lg"
-                >
-                  {text}
-                </DorianteText>
-              ))}
-            </div>
+            {content.images.map((image, index) => (
+              <SwiperSlide key={content.id + index}>
+                <div className="w-full h-full flex justify-center items-center">
+                  <DorianteImage src={image} alt={`Experience image ${index + 1}`} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <DorianteTitle color="light" tag="h1">
+            {content.title}
+          </DorianteTitle>
+          <div>
+            {content.details.map((text, i) => (
+              <DorianteText key={content.id + i} color="white" align="center" size="lg">
+                {text}
+              </DorianteText>
+            ))}
           </div>
-        ))}
-      </article>
-    </section>
-  );
-};
+        </div>
+      ))}
+    </DorianteSection>
+  )
+}

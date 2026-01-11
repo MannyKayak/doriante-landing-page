@@ -2,13 +2,13 @@ import Image from 'next/image'
 import React from 'react'
 import DorianteSection from '../ui/DorianteSection'
 import { DorinateLogo } from '../ui/DorianteLogo'
+import DorianteText from '../ui/DorianteText'
 
 export type HeroSectionProps = {
-  logoSrc: string
   description: string
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ logoSrc, description }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ description }) => {
   return (
     <DorianteSection>
       {/* Background */}
@@ -24,12 +24,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ logoSrc, description }
       </div>
 
       {/* Content */}
-      <div className="relative flex min-h-screen max-w-6xl flex-col pt-28">
-        <div className="max-w-2xl">
-          <p className="font-serif text-[40px] leading-[1.05] tracking-tight text-[#0b2b3a] md:text-[56px]">
-            {description}
-          </p>
-        </div>
+      <div className="relative flex min-h-screen max-w-2xl flex-col pt-28">
+        <DorianteText color="dark" size="3xl">
+          {description}
+        </DorianteText>
       </div>
 
       {/* Big logo bottom */}

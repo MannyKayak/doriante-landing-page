@@ -10,12 +10,7 @@ import { ExperiencesSection } from '@/components/ExperiencesSection'
 import { HeroSection, HeroSectionProps } from '@/components/HeroSection'
 import { ExperiencesDetailsSection } from '@/components/ExperiencesDetailsSection'
 import SubHeroSection, { SubHeroSectionProps } from '@/components/SubHeroSection'
-import {
-  ActivityCard,
-  ActivitySectionProps,
-  ExperiencesDetailsCard,
-  FeatureCard,
-} from '../../types'
+import { ActivitySectionProps, ExperiencesDetailsCard, FeatureCard } from '../../types'
 import { ActivitiesSection } from '@/components/ActivitiesSection'
 import { AboutUs } from '@/components/AboutUs'
 
@@ -24,7 +19,13 @@ export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
-
+  const landingData = await payload.findGlobal({
+    slug: 'landing',
+    user,
+  })
+  // landing data contiene tutti i dati del global "landing", devo fare alcune modifiche:
+  // - nel global credo ci sia dentro anche il footer, che forse metterei in una sezione separata
+  // - bisogna capire il multilingua a i form
   const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
   const heroConfig: HeroSectionProps = {

@@ -90,8 +90,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    landing: Landing;
+  };
+  globalsSelect: {
+    landing: LandingSelect<false> | LandingSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -663,6 +667,146 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing".
+ */
+export interface Landing {
+  id: string;
+  hero: {
+    title: string;
+    subtitle?: string | null;
+    image: string | Media;
+  };
+  subHero: {
+    text: string;
+  };
+  cardSection: {
+    cards: {
+      title: string;
+      text: string;
+      image: string | Media;
+      id?: string | null;
+    }[];
+  };
+  swiperSections: {
+    sections: {
+      title: string;
+      text: string;
+      images: {
+        image: string | Media;
+        id?: string | null;
+      }[];
+      id?: string | null;
+    }[];
+  };
+  formSection: {
+    title: string;
+    description?: string | null;
+    submitLabel: string;
+  };
+  gallery: {
+    cards: {
+      title: string;
+      image: string | Media;
+      id?: string | null;
+    }[];
+  };
+  about: {
+    title: string;
+    text: string;
+    image: string | Media;
+  };
+  footer?: {
+    text?: string | null;
+    note?: string | null;
+    image?: (string | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing_select".
+ */
+export interface LandingSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        image?: T;
+      };
+  subHero?:
+    | T
+    | {
+        text?: T;
+      };
+  cardSection?:
+    | T
+    | {
+        cards?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              image?: T;
+              id?: T;
+            };
+      };
+  swiperSections?:
+    | T
+    | {
+        sections?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  formSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        submitLabel?: T;
+      };
+  gallery?:
+    | T
+    | {
+        cards?:
+          | T
+          | {
+              title?: T;
+              image?: T;
+              id?: T;
+            };
+      };
+  about?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        image?: T;
+      };
+  footer?:
+    | T
+    | {
+        text?: T;
+        note?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

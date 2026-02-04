@@ -1,6 +1,6 @@
 import { headers as getHeaders } from 'next/headers.js'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
@@ -13,6 +13,8 @@ import SubHeroSection, { SubHeroSectionProps } from '@/components/SubHeroSection
 import { ActivitySectionProps, ExperiencesDetailsCard, FeatureCard } from '../../types'
 import { ActivitiesSection } from '@/components/ActivitiesSection'
 import { AboutUs } from '@/components/AboutUs'
+import { Form } from '@payloadcms/ui'
+import { FormSection } from '@/components/FormSection'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -133,6 +135,7 @@ export default async function HomePage() {
       <ExperiencesDetailsSection contentData={contentData} />
       <ExperiencesDetailsSection contentData={contentData} />
       <ExperiencesDetailsSection contentData={contentData} />
+      <FormSection />
       <ActivitiesSection {...activitiesSectionData} />
       <AboutUs {...aboutUsData} />
     </div>

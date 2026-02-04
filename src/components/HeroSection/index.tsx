@@ -1,5 +1,6 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import DorianteSection from '../ui/DorianteSection'
 import { DorinateLogo } from '../ui/DorianteLogo'
 import DorianteText from '../ui/DorianteText'
@@ -9,6 +10,21 @@ export type HeroSectionProps = {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ description }) => {
+  useEffect(() => {
+    fetch('/api/newsletter/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        subject: 'Test newsletter',
+        html: '<p>Ciao! Questo è un test.</p>',
+      }),
+    })
+      .then(async (r) => ({ ok: r.ok, status: r.status, body: await r.json() }))
+      .then((result) => {
+        console.log('Newsletter sent:', result)
+      })
+      .catch(console.error)
+  }, [])
   return (
     <DorianteSection>
       {/* Background */}

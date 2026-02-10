@@ -3,11 +3,11 @@ import { ExperienceCard } from './Components/ExperienceCard'
 import DorianteSection from '../ui/DorianteSection'
 import { FeatureCard } from '@/types'
 
-type ExperiencesSectionProps = {
+type PillarsSectionProps = {
   features: FeatureCard[]
 }
 
-export const ExperiencesSection: FC<ExperiencesSectionProps> = ({ features }): JSX.Element => {
+export const PillarsSection: FC<PillarsSectionProps> = ({ features }): JSX.Element => {
   return (
     <DorianteSection className="pb-20">
       <div className="flex justify-around gap-8">

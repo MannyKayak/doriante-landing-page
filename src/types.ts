@@ -1,5 +1,5 @@
-export type ExperiencesDetailsSectionProp = {
-  contentData: ExperiencesDetailsCard[]
+export type GallerySectionProp = {
+  contentData: GalleryCard[]
 }
 
 export type FeatureCard = {
@@ -8,7 +8,7 @@ export type FeatureCard = {
   description: string
 }
 
-export type ExperiencesDetailsCard = {
+export type GalleryCard = {
   id: number
   title: string
   images: string[]

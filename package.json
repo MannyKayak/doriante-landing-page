@@ -19,9 +19,11 @@
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "3.64.0",
+    "@payloadcms/email-resend": "3.64.0",
     "@payloadcms/next": "3.64.0",
     "@payloadcms/plugin-form-builder": "^3.64.0",
     "@payloadcms/richtext-lexical": "3.64.0",
+    "@payloadcms/translations": "^3.76.0",
     "@payloadcms/ui": "3.64.0",
     "@tailwindcss/postcss": "^4.1.18",
     "cross-env": "^7.0.3",

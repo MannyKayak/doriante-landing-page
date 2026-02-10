@@ -7,14 +7,12 @@ import DorianteImage from '../ui/DorianteImage'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 
-import './experiencesDetails.css'
+import './galleryDetails.css'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { ExperiencesDetailsSectionProp } from '@/types'
+import { GallerySectionProp } from '@/types'
 
-export const ExperiencesDetailsSection: FC<ExperiencesDetailsSectionProp> = ({
-  contentData,
-}): JSX.Element => {
+export const GallerySection: FC<GallerySectionProp> = ({ contentData }): JSX.Element => {
   return (
     <DorianteSection className="flex flex-col pt-20 ">
       {contentData.map((content) => (

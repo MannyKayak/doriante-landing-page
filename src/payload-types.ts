@@ -100,7 +100,7 @@ export interface Config {
   globalsSelect: {
     landing: LandingSelect<false> | LandingSelect<true>;
   };
-  locale: null;
+  locale: 'en' | 'it';
   user: User & {
     collection: 'users';
   };
@@ -737,54 +737,127 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Landing {
   id: string;
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    ogImage?: (string | null) | Media;
+    noIndex?: boolean | null;
+  };
   hero: {
-    title: string;
-    subtitle?: string | null;
-    image: string | Media;
+    heading: string;
+    subHeading: string;
+    subHeroText: string;
+    backgroundImage: string | Media;
   };
-  subHero: {
-    text: string;
+  pillars?: {
+    items?:
+      | {
+          key: 'dimora' | 'gusto' | 'mirabilia' | 'amenita';
+          title: string;
+          subtitle: string;
+          icon?: (string | null) | Media;
+          /**
+           * Anchor per scroll (es: dimora, gusto, mirabilia, amenita)
+           */
+          anchorId: string;
+          id?: string | null;
+        }[]
+      | null;
   };
-  cardSection: {
-    cards: {
+  sections: {
+    dimora: {
+      /**
+       * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+       */
+      sectionTitle: string;
+      /**
+       * Titolo principale della sezione
+       */
       title: string;
-      text: string;
-      image: string | Media;
-      id?: string | null;
-    }[];
-  };
-  swiperSections: {
-    sections: {
-      title: string;
-      text: string;
+      /**
+       * Testo descrittivo della sezione
+       */
+      description: string;
       images: {
+        image: string | Media;
+        caption?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[];
+    };
+    gusto: {
+      /**
+       * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+       */
+      sectionTitle: string;
+      /**
+       * Titolo principale della sezione
+       */
+      title: string;
+      /**
+       * Testo descrittivo della sezione
+       */
+      description: string;
+      images: {
+        image: string | Media;
+        caption?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[];
+    };
+    mirabilia: {
+      /**
+       * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+       */
+      sectionTitle: string;
+      /**
+       * Titolo principale della sezione
+       */
+      title: string;
+      /**
+       * Testo descrittivo della sezione
+       */
+      description: string;
+      images: {
+        image: string | Media;
+        caption?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[];
+    };
+    amenita: {
+      /**
+       * Titolo della sezione (es: Amenità / Amenities)
+       */
+      sectionTitle: string;
+      /**
+       * Titolo della sezione (es: Amenità / Amenities)
+       */
+      title: string;
+      cards: {
+        cardtitle: string;
+        cardDescription: string;
         image: string | Media;
         id?: string | null;
       }[];
-      id?: string | null;
-    }[];
+    };
   };
   formSection: {
+    heading: string;
+    description: string;
+    /**
+     * Testo sotto al form (es: privacy + riferimento alla disiscrizione). Il link lo gestiamo lato frontend.
+     */
+    footerText: string;
+  };
+  project: {
     title: string;
-    description?: string | null;
-    submitLabel: string;
-  };
-  gallery: {
-    cards: {
-      title: string;
-      image: string | Media;
-      id?: string | null;
-    }[];
-  };
-  about: {
-    title: string;
-    text: string;
-    image: string | Media;
-  };
-  footer?: {
-    text?: string | null;
-    note?: string | null;
-    image?: (string | null) | Media;
+    subtitle: string;
+    /**
+     * Frase evocativa / di chiusura
+     */
+    tagline: string;
+    description: string;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -794,78 +867,113 @@ export interface Landing {
  * via the `definition` "landing_select".
  */
 export interface LandingSelect<T extends boolean = true> {
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        noIndex?: T;
+      };
   hero?:
     | T
     | {
-        title?: T;
-        subtitle?: T;
-        image?: T;
+        heading?: T;
+        subHeading?: T;
+        subHeroText?: T;
+        backgroundImage?: T;
       };
-  subHero?:
+  pillars?:
     | T
     | {
-        text?: T;
-      };
-  cardSection?:
-    | T
-    | {
-        cards?:
+        items?:
           | T
           | {
+              key?: T;
               title?: T;
-              text?: T;
-              image?: T;
+              subtitle?: T;
+              icon?: T;
+              anchorId?: T;
               id?: T;
             };
       };
-  swiperSections?:
+  sections?:
     | T
     | {
-        sections?:
+        dimora?:
           | T
           | {
+              sectionTitle?: T;
               title?: T;
-              text?: T;
+              description?: T;
               images?:
                 | T
                 | {
                     image?: T;
+                    caption?: T;
+                    alt?: T;
                     id?: T;
                   };
-              id?: T;
+            };
+        gusto?:
+          | T
+          | {
+              sectionTitle?: T;
+              title?: T;
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    caption?: T;
+                    alt?: T;
+                    id?: T;
+                  };
+            };
+        mirabilia?:
+          | T
+          | {
+              sectionTitle?: T;
+              title?: T;
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    caption?: T;
+                    alt?: T;
+                    id?: T;
+                  };
+            };
+        amenita?:
+          | T
+          | {
+              sectionTitle?: T;
+              title?: T;
+              cards?:
+                | T
+                | {
+                    cardtitle?: T;
+                    cardDescription?: T;
+                    image?: T;
+                    id?: T;
+                  };
             };
       };
   formSection?:
     | T
     | {
-        title?: T;
+        heading?: T;
         description?: T;
-        submitLabel?: T;
+        footerText?: T;
       };
-  gallery?:
-    | T
-    | {
-        cards?:
-          | T
-          | {
-              title?: T;
-              image?: T;
-              id?: T;
-            };
-      };
-  about?:
+  project?:
     | T
     | {
         title?: T;
-        text?: T;
-        image?: T;
-      };
-  footer?:
-    | T
-    | {
-        text?: T;
-        note?: T;
-        image?: T;
+        subtitle?: T;
+        tagline?: T;
+        description?: T;
       };
   updatedAt?: T;
   createdAt?: T;

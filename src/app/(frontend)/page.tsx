@@ -1,20 +1,20 @@
 import { headers as getHeaders } from 'next/headers.js'
 import { getPayload } from 'payload'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
 import './styles.css'
 
-import { ExperiencesSection } from '@/components/ExperiencesSection'
+import { PillarsSection } from '@/components/PillarsSection'
 import { HeroSection, HeroSectionProps } from '@/components/HeroSection'
-import { ExperiencesDetailsSection } from '@/components/ExperiencesDetailsSection'
+import { GallerySection } from '@/components/GallerySection'
 import SubHeroSection, { SubHeroSectionProps } from '@/components/SubHeroSection'
-import { ActivitySectionProps, ExperiencesDetailsCard, FeatureCard } from '../../types'
-import { ActivitiesSection } from '@/components/ActivitiesSection'
+import { ActivitySectionProps, GalleryCard, FeatureCard } from '../../types'
+import { AmenitySection } from '@/components/AmenitySection'
 import { AboutUs } from '@/components/AboutUs'
 import { Form } from '@payloadcms/ui'
-import { FormSection } from '@/components/FormSection'
+import FormSection from '@/components/FormSection'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -60,7 +60,7 @@ export default async function HomePage() {
     },
   ]
 
-  const contentData: ExperiencesDetailsCard[] = [
+  const contentData: GalleryCard[] = [
     {
       id: 10,
       title: 'Where Art Lives',
@@ -77,7 +77,7 @@ export default async function HomePage() {
     },
   ]
 
-  const activitiesSectionData: ActivitySectionProps = {
+  const AmenitySectionData: ActivitySectionProps = {
     title: 'Esperienze e Territorio',
     // description: undefined, // volutamente assente
     data: [
@@ -131,12 +131,13 @@ export default async function HomePage() {
     <div className="bg-dark">
       <HeroSection description={heroConfig.description} />
       <SubHeroSection text={subHeroConfig.text} />
-      <ExperiencesSection features={features} />
-      <ExperiencesDetailsSection contentData={contentData} />
-      <ExperiencesDetailsSection contentData={contentData} />
-      <ExperiencesDetailsSection contentData={contentData} />
-      <FormSection />
-      <ActivitiesSection {...activitiesSectionData} />
+      <PillarsSection features={features} />
+      <GallerySection contentData={contentData} />
+      <GallerySection contentData={contentData} />
+      <GallerySection contentData={contentData} />
+      <AmenitySection {...AmenitySectionData} />
+
+      <FormSection formId="newsletter-form" />
       <AboutUs {...aboutUsData} />
     </div>
   )

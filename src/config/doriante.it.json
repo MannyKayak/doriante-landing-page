@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Benvenuti a casa",
+    "subtitle": "Assaporate la quiete, ritrovate la meraviglia",
+    "tagline": "Un boutique retreat sospeso tra arte e natura",
+    "description": "Doriante è un rifugio d’autore ad Ameno, sulle colline del Lago d’Orta. Cinque suite di charme immerse in un paesaggio UNESCO, dove il design essenziale incontra l’arte e un’ospitalità che celebra i piaceri della vita, nei gesti, nei sapori e nel tempo condiviso. Un luogo in cui rallentare, respirare e ritrovare il proprio ritmo"
+  },
+  "pillars": {
+    "house": {
+      "label": "Dimora",
+      "text": "Rifugio elegante e onirico tra arte e tempo per sé stessi"
+    },
+    "taste": {
+      "label": "Gusto",
+      "text": "La casa custodisce un salotto per i piaceri del gusto e della convivialità"
+    },
+    "mirabilia": {
+      "label": "Mirabilia",
+      "text": "Nel nostro concept store troverai oggetti d’arte e prodotti enogastronomici"
+    },
+    "amenities": {
+      "label": "Amenità",
+      "text": "Scoprite la collezione di esperienze per accompagnare il vostro soggiorno"
+    }
+  },
+  "sections": {
+    "house": {
+      "title": "Dimora",
+      "body": "La dimora offre cinque suite che portano i nomi di donne e uomini d’altri tempi, personalità forti e luminose che ne ispirano colori, stile e carattere. Nella struttura settecentesca abbiamo voluto coniugare l’antichità del contesto con l’arte contemporanea e la celebrazione dei piaceri della vita."
+    },
+    "taste": {
+      "title": "Gusto",
+      "body": "Al Doriante il gusto prende la forma gentile dell’ospitalità, come un’estensione naturale della casa, del paesaggio e dell’anima del luogo. Il cuore pulsante è il nostro salotto, dove desideriamo che gli ospiti si sentano come a casa e possano assaporare vini naturali, cocktail curati e piatti semplici ma profondi, nati dalla materia prima, dall’intuizione e dall’equilibrio."
+    },
+    "mirabilia": {
+      "title": "Mirabilia",
+      "body": "Più che un negozio, un ponte tra la casa e il viaggio.\nMirabilia è il concept store diffuso del Doriante: una selezione curata di oggetti che abitano le stanze della dimora. Opere d’arte, pezzi di design e prelibatezze enogastronomiche che riflettono la nostra filosofia. Da vivere come semplici souvenir o come piccoli talismani: un invito a guardare il mondo da un’altra prospettiva."
+    },
+    "amenities": {
+      "title": "Amenità",
+      "body": "Piccoli piaceri accuratamente selezionati.\nLe amenità del Doriante sono pensate per farvi vivere come raro ciò che è vicino e come prezioso ciò che è semplice. Una collezione di esperienze — alcune nella casa, altre nel territorio — che accompagna il vostro soggiorno con un ritmo gentile e autentico."
+    }
+  },
+  "newsletter": {
+    "title": "Rimaniamo in contatto",
+    "text": "Unisciti alla nostra comunità di amanti della bellezza e ricevi aggiornamenti sul Doriante, sulle sue amenità e sul Lago d’Orta"
+  },
+  "project": {
+    "title": "Il Progetto",
+    "body": "Per molto tempo Doriante è esistito come luogo dell’immaginazione. Oggi ha preso forma ad Ameno, un borgo raccolto tra boschi e silenzi, affacciato sulla riva più quieta del Lago d’Orta.\nDoriante resta fedele alla sua anima sfuggente: sospeso tra bellezza, semplicità e natura, dove ogni angolo sussurra una storia. Il suo nome non appartiene a nessuna lingua, eppure parla a tutti. Evoca qualcosa di raro ma non pretenzioso, intimo e aperto al mondo. Ogni suite è un racconto breve, senza temi definiti — solo suggestioni in cui perdersi.",
+    "closing": "Un luogo in cui l’arte si intreccia con l’abitare,\nil design dialoga con il territorio\ne la semplicità diventa eleganza.",
+    "welcome": "Benvenuti"
+  }
+}

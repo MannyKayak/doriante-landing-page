@@ -11,7 +11,7 @@ import 'swiper/css/pagination'
 import DorianteSection from '../ui/DorianteSection'
 import DorianteTitle from '../ui/DorianteTitle'
 
-export const ActivitiesSection: FC<ActivitySectionProps> = ({ title, description, data }) => {
+export const AmenitySection: FC<ActivitySectionProps> = ({ title, description, data }) => {
   if (!data?.length) return null
 
   return (

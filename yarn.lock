@@ -1295,6 +1295,11 @@
     prompts "2.4.2"
     uuid "10.0.0"
 
+"@payloadcms/email-resend@3.64.0":
+  version "3.64.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/email-resend/-/email-resend-3.64.0.tgz#ba75b9c5a802a4785a31fb1c3c1cbf063a002a57"
+  integrity sha512-GzqzEqbAXQAlEU8iCSbk67opcv+xKsmasnGCV1szgKGZ/mdY8CUxfqhCyPOo1hhHuMupKpAnfO+OXaIrWvc6WA==
+
 "@payloadcms/graphql@3.64.0":
   version "3.64.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/graphql/-/graphql-3.64.0.tgz#acf4901950852738c57d2733bfb446fe1e3bdc39"
@@ -1371,6 +1376,13 @@
   version "3.64.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/translations/-/translations-3.64.0.tgz#5c2ad4d06dd22d9b9d06b08ae84d84fc167f686a"
   integrity sha512-DlNPILu1h+ZTtGUZG28rZtWL/92t5mzK/k7sC4vWk/gPPMOXtZ5fNc6ut2lwzJ13E5lxvtRtVY/+IjNzKrUAFw==
+  dependencies:
+    date-fns "4.1.0"
+
+"@payloadcms/translations@^3.76.0":
+  version "3.76.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/translations/-/translations-3.76.0.tgz#58556a992e55c31623699fddd25e0436179cc60e"
+  integrity sha512-Mny6IXOQS2nXIyOwKkWtenHs/3aBt8evc1AoMxGU/hQLe8Lcmbi8ua4lsTAY+vMXoL3z+7ns20EbBqM2Ld3eNA==
   dependencies:
     date-fns "4.1.0"
 

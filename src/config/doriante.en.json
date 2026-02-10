@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Welcome home",
+    "subtitle": "Savour the quiet, rediscover wonder",
+    "tagline": "A boutique retreat suspended between art and nature",
+    "description": "Doriante is an author’s hideaway in Ameno, on the hills overlooking Lake Orta. Five charming suites set within a UNESCO-listed landscape, where essential design meets art and hospitality celebrates the pleasures of life — in gestures, in flavours, and in shared time. A place to slow down, breathe, and rediscover your own rhythm"
+  },
+  "pillars": {
+    "house": {
+      "label": "House",
+      "text": "An elegant and ethereal refuge between art and time for oneself"
+    },
+    "taste": {
+      "label": "Taste",
+      "text": "The house shelters a salon where taste and conviviality are celebrated"
+    },
+    "mirabilia": {
+      "label": "Mirabilia",
+      "text": "In our concept store you will find art objects and fine food and wine products."
+    },
+    "amenities": {
+      "label": "Amenities",
+      "text": "Discover a curated collection of experiences to accompany your stay"
+    }
+  },
+  "sections": {
+    "house": {
+      "title": "House",
+      "body": "The house offers five suites named after women and men of another time, strong and luminous personalities that inspire their colours, style, and character. Within the eighteenth-century structure, we have sought to unite the antiquity of the setting with contemporary art, modern comforts, and the celebration of life’s pleasures."
+    },
+    "taste": {
+      "title": "Taste",
+      "body": "At Doriante, taste takes the gentle form of hospitality, a natural extension of the house, the landscape, and the soul of the place. Its beating heart is our salon, where we wish guests to feel at home and to savour natural wines, thoughtfully crafted cocktails, and simple yet profound dishes, born of raw ingredients, intuition, and balance."
+    },
+    "mirabilia": {
+      "title": "Mirabilia",
+      "body": "More than a shop, a bridge between the house and the journey.\nMirabilia is Doriante’s dispersed concept store: a curated selection of objects that inhabit the rooms of the house. Artworks, design pieces, and fine food and wine delicacies that reflect our philosophy. You may experience them as simple keepsakes, or as small talismans — an invitation to look at the world from another perspective."
+    },
+    "amenities": {
+      "title": "Amenities",
+      "body": "Small pleasures, carefully selected.\nDoriante’s amenities are designed to let you experience as rare what is close at hand, and as precious what is simple. A collection of experiences — some within the house, others across the territory — to accompany your stay with a gentle, authentic rhythm."
+    }
+  },
+  "newsletter": {
+    "title": "Stay in touch",
+    "text": "Join our community of beauty lovers and receive curated updates about Doriante, its amenities, and the Orta Lake."
+  },
+  "project": {
+    "title": "The Project",
+    "body": "For a long time, Doriante existed as a place of the imagination. Today it has taken shape in Ameno, a secluded village among woods and silence, overlooking the quietest shore of Lake Orta.\nDoriante remains faithful to its elusive soul: suspended between beauty, simplicity, and nature, where every corner whispers a story. Its name belongs to no language, yet it speaks to everyone. It evokes something rare without pretence, intimate and open to the world. Each suite is a short tale, with no fixed themes — only suggestions in which to lose oneself.",
+    "closing": "A place where art intertwines with living,\ndesign enters into dialogue with the land,\nand simplicity becomes elegance.",
+    "welcome": "Welcome"
+  }
+}

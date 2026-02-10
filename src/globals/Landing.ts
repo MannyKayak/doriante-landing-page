@@ -1,183 +1,68 @@
-import { GlobalConfig } from 'payload'
+import { pillarsFields } from '@/components/PillarsSection/config'
+import { heroFields } from '@/components/HeroSection/config'
+import type { GlobalConfig } from 'payload'
+import { sectionsFields } from '@/components/GallerySection/config'
+import { formSectionFields } from '@/components/FormSection/config'
+import { projectSectionFields } from '@/components/AboutUs/config'
 
 export const Landing: GlobalConfig = {
   slug: 'landing',
-  label: 'Landing Page',
+  label: 'Landing',
+  admin: {
+    group: 'Website',
+  },
+  access: {
+    read: () => true,
+  },
   fields: [
-    // -------------------
-    // HERO
-    // -------------------
     {
-      type: 'group',
-      name: 'hero',
-      label: 'Hero Section',
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'subtitle', type: 'textarea' },
+      type: 'tabs',
+      tabs: [
+        // =========================
+        // SEO
+        // =========================
         {
-          name: 'image',
-          type: 'relationship',
-          relationTo: 'media',
-          required: true,
-        },
-      ],
-    },
-
-    // -------------------
-    // SUB HERO
-    // -------------------
-    {
-      type: 'group',
-      name: 'subHero',
-      label: 'Sub Hero Section',
-      fields: [
-        {
-          name: 'text',
-          type: 'textarea',
-          required: true,
-        },
-      ],
-    },
-
-    // -------------------
-    // CARD SECTION (3 cards)
-    // -------------------
-    {
-      type: 'group',
-      name: 'cardSection',
-      label: 'Card Section (3 cards)',
-      fields: [
-        {
-          name: 'cards',
-          type: 'array',
-          minRows: 3,
-          maxRows: 3,
-          required: true,
+          label: 'SEO',
           fields: [
-            { name: 'title', type: 'text', required: true },
-            { name: 'text', type: 'textarea', required: true },
             {
-              name: 'image',
-              type: 'relationship',
-              relationTo: 'media',
-              required: true,
-            },
-          ],
-        },
-      ],
-    },
-
-    // -------------------
-    // SWIPER SECTIONS (3 sections, ognuna con 3 immagini)
-    // -------------------
-    {
-      type: 'group',
-      name: 'swiperSections',
-      label: 'Swiper Sections (3 sections)',
-      fields: [
-        {
-          name: 'sections',
-          type: 'array',
-          minRows: 3,
-          maxRows: 3,
-          required: true,
-          fields: [
-            { name: 'title', type: 'text', required: true },
-            { name: 'text', type: 'textarea', required: true },
-            {
-              name: 'images',
-              type: 'array',
-              minRows: 3,
-              maxRows: 3,
-              required: true,
+              name: 'seo',
+              type: 'group',
               fields: [
+                { name: 'metaTitle', type: 'text' },
                 {
-                  name: 'image',
-                  type: 'relationship',
-                  relationTo: 'media',
-                  required: true,
+                  name: 'metaDescription',
+                  type: 'textarea',
+                  localized: true,
                 },
+                {
+                  name: 'ogImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
+                { name: 'noIndex', type: 'checkbox', defaultValue: false },
               ],
             },
           ],
         },
-      ],
-    },
-
-    // -------------------
-    // FORM SECTION
-    // -------------------
-    {
-      type: 'group',
-      name: 'formSection',
-      label: 'Form Section',
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'description', type: 'textarea' },
-        { name: 'submitLabel', type: 'text', required: true },
-      ],
-    },
-
-    // -------------------
-    // GALLERY (3 cards)
-    // -------------------
-    {
-      type: 'group',
-      name: 'gallery',
-      label: 'Gallery (3 cards)',
-      fields: [
         {
-          name: 'cards',
-          type: 'array',
-          minRows: 3,
-          maxRows: 3,
-          required: true,
-          fields: [
-            { name: 'title', type: 'text', required: true },
-            {
-              name: 'image',
-              type: 'relationship',
-              relationTo: 'media',
-              required: true,
-            },
-          ],
+          label: 'Hero',
+          fields: [...heroFields],
         },
-      ],
-    },
-
-    // -------------------
-    // ABOUT US
-    // -------------------
-    {
-      type: 'group',
-      name: 'about',
-      label: 'About Us',
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'text', type: 'textarea', required: true },
         {
-          name: 'image',
-          type: 'relationship',
-          relationTo: 'media',
-          required: true,
+          label: 'Valori',
+          fields: [...pillarsFields],
         },
-      ],
-    },
-
-    // -------------------
-    // FOOTER
-    // -------------------
-    {
-      type: 'group',
-      name: 'footer',
-      label: 'Footer',
-      fields: [
-        { name: 'text', type: 'textarea' },
-        { name: 'note', type: 'text' },
         {
-          name: 'image',
-          type: 'relationship',
-          relationTo: 'media',
+          label: 'Sections',
+          fields: [...sectionsFields],
+        },
+        {
+          label: 'Form',
+          fields: [formSectionFields],
+        },
+        {
+          label: 'Il Progetto',
+          fields: [projectSectionFields],
         },
       ],
     },

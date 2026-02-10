@@ -27,6 +27,10 @@ export default buildConfig({
   collections: [Users, Media, NewsletterSubscribers, NewsletterCampaigns],
   globals: [Landing],
   editor: lexicalEditor(),
+  localization: {
+    locales: ['en', 'it'],
+    defaultLocale: 'it',
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

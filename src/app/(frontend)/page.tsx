@@ -7,13 +7,12 @@ import config from '@/payload.config'
 import './styles.css'
 
 import { PillarsSection } from '@/components/PillarsSection'
-import { HeroSection, HeroSectionProps } from '@/components/HeroSection'
+import { HeroSection } from '@/components/HeroSection'
 import { GallerySection } from '@/components/GallerySection'
 import SubHeroSection, { SubHeroSectionProps } from '@/components/SubHeroSection'
 import { ActivitySectionProps, GalleryCard, FeatureCard } from '../../types'
 import { AmenitySection } from '@/components/AmenitySection'
 import { AboutUs } from '@/components/AboutUs'
-import { Form } from '@payloadcms/ui'
 import FormSection from '@/components/FormSection'
 
 export default async function HomePage() {
@@ -29,11 +28,6 @@ export default async function HomePage() {
   // - nel global credo ci sia dentro anche il footer, che forse metterei in una sezione separata
   // - bisogna capire il multilingua a i form
   const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
-  const heroConfig: HeroSectionProps = {
-    description:
-      'Benvenuti a casa.<br/>Assaporate la quiete, ritrovate la meraviglia. Un boutique retreat sospeso tra arte e natura.',
-  }
 
   const subHeroConfig: SubHeroSectionProps = {
     text: 'Doriante è un rifugio d’autore ad Ameno, sulle colline del Lago d’Orta. Cinque suite di charme immerse in un paesaggio UNESCO, dove il design essenziale incontra l’arte contemporanea e una cucina che celebra il territorio. Un luogo per rallentare, respirare e ritrovare il proprio ritmo.',
@@ -129,7 +123,7 @@ export default async function HomePage() {
 
   return (
     <div className="bg-dark">
-      <HeroSection description={heroConfig.description} />
+      <HeroSection {...landingData.hero} />
       <SubHeroSection text={subHeroConfig.text} />
       <PillarsSection features={features} />
       <GallerySection contentData={contentData} />
@@ -137,7 +131,7 @@ export default async function HomePage() {
       <GallerySection contentData={contentData} />
       <AmenitySection {...AmenitySectionData} />
 
-      <FormSection formId="newsletter-form" />
+      <FormSection />
       <AboutUs {...aboutUsData} />
     </div>
   )

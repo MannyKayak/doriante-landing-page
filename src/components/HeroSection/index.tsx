@@ -1,36 +1,25 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 import DorianteSection from '../ui/DorianteSection'
 import { DorinateLogo } from '../ui/DorianteLogo'
 import DorianteText from '../ui/DorianteText'
+import { getPayload } from 'payload'
+import payloadConfig from '@/payload.config'
+import { HeroSectionProps } from '@/payload-types'
 
-export type HeroSectionProps = {
-  description: string
-}
-
-export const HeroSection: React.FC<HeroSectionProps> = ({ description }) => {
-  useEffect(() => {
-    fetch('/api/newsletter/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        subject: 'Test newsletter',
-        html: '<p>Ciao! Questo è un test.</p>',
-      }),
-    })
-      .then(async (r) => ({ ok: r.ok, status: r.status, body: await r.json() }))
-      .then((result) => {
-        console.log('Newsletter sent:', result)
-      })
-      .catch(console.error)
-  }, [])
+export const HeroSection: React.FC<HeroSectionProps> = async ({
+  heading,
+  subHeading,
+  backgroundImage,
+}) => {
+  console.log('Rendering HeroSection with data:', { heading, subHeading, backgroundImage })
   return (
     <DorianteSection>
       {/* Background */}
       <div className="z-0">
         <Image
-          src="/assets/images/backgroundHero.png"
+          src={'/assets/images/backgroundHero.png'}
           alt="background"
           fill
           className="object-cover"
@@ -40,9 +29,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ description }) => {
       </div>
 
       {/* Content */}
-      <div className="relative flex min-h-screen max-w-2xl flex-col pt-28">
-        <DorianteText color="dark" size="3xl">
-          {description}
+      <div className="relative flex min-h-screen max-w-2xl flex-col pt-28 ">
+        <DorianteText color="dark" size="3xl" style="serif">
+          {heading || 'Welcome to Doriante'}
+        </DorianteText>
+        <DorianteText color="dark" size="lg" style="arial">
+          {subHeading}
         </DorianteText>
       </div>
 

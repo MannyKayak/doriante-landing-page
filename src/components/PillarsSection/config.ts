@@ -13,6 +13,7 @@ export const pillarsFields: Field[] = [
     name: 'pillars',
     type: 'group',
     label: 'Pilastri',
+    interfaceName: 'PillarsSectionProps',
     fields: [
       {
         name: 'items',

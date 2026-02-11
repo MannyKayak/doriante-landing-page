@@ -10,6 +10,7 @@ import type { Field } from 'payload'
 export const projectSectionFields: Field = {
   name: 'project',
   type: 'group',
+  interfaceName: 'ProjectSectionProps',
   label: 'Il Progetto',
   fields: [
     {

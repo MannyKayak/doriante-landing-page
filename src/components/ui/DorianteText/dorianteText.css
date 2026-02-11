@@ -1,6 +1,12 @@
-.doriante-text {
-  font-family: "Inter", sans-serif;
+.doriante-text.arial {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
 }
+
+.doriante-text.serif {
+  font-family: var(--font-ogg);
+}
+
 .doriante-text.text-xxs {
   font-size: 0.625rem;
 }

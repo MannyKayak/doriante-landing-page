@@ -7,6 +7,7 @@ export const sectionsFields: Field[] = [
     name: 'sections',
     type: 'group',
     label: 'Sezioni',
+    interfaceName: 'SectionsProps',
     fields: [
       createGallerySectionFields({
         name: 'dimora',

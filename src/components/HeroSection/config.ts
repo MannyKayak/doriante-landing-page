@@ -11,6 +11,7 @@ export const heroFields: Field[] = [
     name: 'hero',
     type: 'group',
     label: 'Hero',
+    interfaceName: 'HeroSectionProps',
     fields: [
       {
         name: 'heading',

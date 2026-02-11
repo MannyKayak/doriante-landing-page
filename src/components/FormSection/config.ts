@@ -1,15 +1,10 @@
 import type { Field } from 'payload'
 
-/**
- * FormSection (solo testi)
- * - heading: intestazione
- * - description: testo descrittivo sopra il form
- * - footerText: testo sotto al form (es: privacy + link disiscrizione gestito dal frontend)
- */
 export const formSectionFields: Field = {
   name: 'formSection',
   type: 'group',
   label: 'Sezione Form',
+  interfaceName: 'FormSectionProps',
   fields: [
     {
       name: 'heading',
@@ -35,6 +30,12 @@ export const formSectionFields: Field = {
         description:
           'Testo sotto al form (es: privacy + riferimento alla disiscrizione). Il link lo gestiamo lato frontend.',
       },
+    },
+    {
+      name: 'form',
+      label: 'Configura Form',
+      type: 'relationship',
+      relationTo: 'forms',
     },
   ],
 }

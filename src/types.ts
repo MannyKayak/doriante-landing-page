@@ -31,6 +31,8 @@ export type DorianteTextProps = {
   inline?: boolean
   children: React.ReactNode
   weight?: 'normal' | 'bold' | 'semibold'
+  className?: string
+  style?: 'arial' | 'serif'
 }
 
 export type ActivitySectionProps = {

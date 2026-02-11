@@ -8,6 +8,10 @@ const tailwindConfig = {
         lightColor: '#eed9a4',
         gray: '#e5e5e3',
       },
+      fontFamily: {
+        serif: ['var(--font-ogg)'],
+        body: ['var(--font-ogg-text)'],
+      },
     },
   },
   plugins: [],

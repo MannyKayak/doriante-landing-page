@@ -1,5 +1,7 @@
 :root {
   --font-mono: 'Roboto Mono', monospace;
+  --font-ogg-text: var(--font-ogg-text);
+  --font-ogg: var(--font-ogg);
 }
 
 * {

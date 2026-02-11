@@ -1,15 +1,16 @@
 import { pillarsFields } from '@/components/PillarsSection/config'
 import { heroFields } from '@/components/HeroSection/config'
-import type { GlobalConfig } from 'payload'
 import { sectionsFields } from '@/components/GallerySection/config'
 import { formSectionFields } from '@/components/FormSection/config'
 import { projectSectionFields } from '@/components/AboutUs/config'
+import { GlobalConfig } from 'payload'
 
 export const Landing: GlobalConfig = {
   slug: 'landing',
-  label: 'Landing',
+  label: 'Contenuti Testuali e Immagini della Landing Page',
   admin: {
     group: 'Website',
+    description: 'Gestisci i contenuti testuali e le immagini della landing page del sito.',
   },
   access: {
     read: () => true,
@@ -18,9 +19,6 @@ export const Landing: GlobalConfig = {
     {
       type: 'tabs',
       tabs: [
-        // =========================
-        // SEO
-        // =========================
         {
           label: 'SEO',
           fields: [

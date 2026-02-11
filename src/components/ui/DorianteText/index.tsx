@@ -32,12 +32,19 @@ const WEIGHT_CLASS = {
   semibold: 'font-semibold',
 } as const
 
+const STYLE_CLASS = {
+  arial: 'arial',
+  serif: 'serif',
+} as const
+
 export default function DorianteText({
   align = 'left',
   color = 'dark',
   size = '3xl',
   inline = false,
   weight = 'normal',
+  className = undefined,
+  style = 'arial',
   children,
 }: DorianteTextProps) {
   const is_html = typeof children === 'string' && /<\/?[a-z][\s\S]*>/i.test(children)
@@ -47,13 +54,11 @@ export default function DorianteText({
 
   return (
     <Tag
-      className={[
-        'doriante-text',
-        ALIGN_CLASS[align],
-        COLOR_CLASS[color],
-        SIZE_CLASS[size],
-        WEIGHT_CLASS[weight],
-      ].join(' ')}
+      className={
+        className
+          ? `${className}`
+          : `doriante-text ${ALIGN_CLASS[align]} ${COLOR_CLASS[color]} ${SIZE_CLASS[size]} ${WEIGHT_CLASS[weight]} ${STYLE_CLASS[style]}`
+      }
     >
       {child}
     </Tag>

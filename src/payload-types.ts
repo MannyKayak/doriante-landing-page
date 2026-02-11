@@ -732,6 +732,8 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
+ * Gestisci i contenuti testuali e le immagini della landing page del sito.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "landing".
  */
@@ -743,124 +745,150 @@ export interface Landing {
     ogImage?: (string | null) | Media;
     noIndex?: boolean | null;
   };
-  hero: {
-    heading: string;
-    subHeading: string;
-    subHeroText: string;
-    backgroundImage: string | Media;
-  };
-  pillars?: {
-    items?:
-      | {
-          key: 'dimora' | 'gusto' | 'mirabilia' | 'amenita';
-          title: string;
-          subtitle: string;
-          icon?: (string | null) | Media;
-          /**
-           * Anchor per scroll (es: dimora, gusto, mirabilia, amenita)
-           */
-          anchorId: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  sections: {
-    dimora: {
-      /**
-       * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
-       */
-      sectionTitle: string;
-      /**
-       * Titolo principale della sezione
-       */
-      title: string;
-      /**
-       * Testo descrittivo della sezione
-       */
-      description: string;
-      images: {
-        image: string | Media;
-        caption?: string | null;
-        alt?: string | null;
-        id?: string | null;
-      }[];
-    };
-    gusto: {
-      /**
-       * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
-       */
-      sectionTitle: string;
-      /**
-       * Titolo principale della sezione
-       */
-      title: string;
-      /**
-       * Testo descrittivo della sezione
-       */
-      description: string;
-      images: {
-        image: string | Media;
-        caption?: string | null;
-        alt?: string | null;
-        id?: string | null;
-      }[];
-    };
-    mirabilia: {
-      /**
-       * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
-       */
-      sectionTitle: string;
-      /**
-       * Titolo principale della sezione
-       */
-      title: string;
-      /**
-       * Testo descrittivo della sezione
-       */
-      description: string;
-      images: {
-        image: string | Media;
-        caption?: string | null;
-        alt?: string | null;
-        id?: string | null;
-      }[];
-    };
-    amenita: {
-      /**
-       * Titolo della sezione (es: Amenità / Amenities)
-       */
-      sectionTitle: string;
-      /**
-       * Titolo della sezione (es: Amenità / Amenities)
-       */
-      title: string;
-      cards: {
-        cardtitle: string;
-        cardDescription: string;
-        image: string | Media;
-        id?: string | null;
-      }[];
-    };
-  };
-  formSection: {
-    heading: string;
-    description: string;
-    /**
-     * Testo sotto al form (es: privacy + riferimento alla disiscrizione). Il link lo gestiamo lato frontend.
-     */
-    footerText: string;
-  };
-  project: {
-    title: string;
-    subtitle: string;
-    /**
-     * Frase evocativa / di chiusura
-     */
-    tagline: string;
-    description: string;
-  };
+  hero: HeroSectionProps;
+  pillars?: PillarsSectionProps;
+  sections: SectionsProps;
+  formSection: FormSectionProps;
+  project: ProjectSectionProps;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroSectionProps".
+ */
+export interface HeroSectionProps {
+  heading: string;
+  subHeading: string;
+  subHeroText: string;
+  backgroundImage: string | Media;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PillarsSectionProps".
+ */
+export interface PillarsSectionProps {
+  items?:
+    | {
+        key: 'dimora' | 'gusto' | 'mirabilia' | 'amenita';
+        title: string;
+        subtitle: string;
+        icon?: (string | null) | Media;
+        /**
+         * Anchor per scroll (es: dimora, gusto, mirabilia, amenita)
+         */
+        anchorId: string;
+        id?: string | null;
+      }[]
+    | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionsProps".
+ */
+export interface SectionsProps {
+  dimora: {
+    /**
+     * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+     */
+    sectionTitle: string;
+    /**
+     * Titolo principale della sezione
+     */
+    title: string;
+    /**
+     * Testo descrittivo della sezione
+     */
+    description: string;
+    images: {
+      image: string | Media;
+      caption?: string | null;
+      alt?: string | null;
+      id?: string | null;
+    }[];
+  };
+  gusto: {
+    /**
+     * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+     */
+    sectionTitle: string;
+    /**
+     * Titolo principale della sezione
+     */
+    title: string;
+    /**
+     * Testo descrittivo della sezione
+     */
+    description: string;
+    images: {
+      image: string | Media;
+      caption?: string | null;
+      alt?: string | null;
+      id?: string | null;
+    }[];
+  };
+  mirabilia: {
+    /**
+     * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+     */
+    sectionTitle: string;
+    /**
+     * Titolo principale della sezione
+     */
+    title: string;
+    /**
+     * Testo descrittivo della sezione
+     */
+    description: string;
+    images: {
+      image: string | Media;
+      caption?: string | null;
+      alt?: string | null;
+      id?: string | null;
+    }[];
+  };
+  amenita: {
+    /**
+     * Titolo della sezione (es: Amenità / Amenities)
+     */
+    sectionTitle: string;
+    /**
+     * Titolo della sezione (es: Amenità / Amenities)
+     */
+    title: string;
+    cards: {
+      cardtitle: string;
+      cardDescription: string;
+      image: string | Media;
+      id?: string | null;
+    }[];
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormSectionProps".
+ */
+export interface FormSectionProps {
+  heading: string;
+  description: string;
+  /**
+   * Testo sotto al form (es: privacy + riferimento alla disiscrizione). Il link lo gestiamo lato frontend.
+   */
+  footerText: string;
+  form?: (string | null) | Form;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectSectionProps".
+ */
+export interface ProjectSectionProps {
+  title: string;
+  subtitle: string;
+  /**
+   * Frase evocativa / di chiusura
+   */
+  tagline: string;
+  description: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -875,109 +903,125 @@ export interface LandingSelect<T extends boolean = true> {
         ogImage?: T;
         noIndex?: T;
       };
-  hero?:
-    | T
-    | {
-        heading?: T;
-        subHeading?: T;
-        subHeroText?: T;
-        backgroundImage?: T;
-      };
-  pillars?:
-    | T
-    | {
-        items?:
-          | T
-          | {
-              key?: T;
-              title?: T;
-              subtitle?: T;
-              icon?: T;
-              anchorId?: T;
-              id?: T;
-            };
-      };
-  sections?:
-    | T
-    | {
-        dimora?:
-          | T
-          | {
-              sectionTitle?: T;
-              title?: T;
-              description?: T;
-              images?:
-                | T
-                | {
-                    image?: T;
-                    caption?: T;
-                    alt?: T;
-                    id?: T;
-                  };
-            };
-        gusto?:
-          | T
-          | {
-              sectionTitle?: T;
-              title?: T;
-              description?: T;
-              images?:
-                | T
-                | {
-                    image?: T;
-                    caption?: T;
-                    alt?: T;
-                    id?: T;
-                  };
-            };
-        mirabilia?:
-          | T
-          | {
-              sectionTitle?: T;
-              title?: T;
-              description?: T;
-              images?:
-                | T
-                | {
-                    image?: T;
-                    caption?: T;
-                    alt?: T;
-                    id?: T;
-                  };
-            };
-        amenita?:
-          | T
-          | {
-              sectionTitle?: T;
-              title?: T;
-              cards?:
-                | T
-                | {
-                    cardtitle?: T;
-                    cardDescription?: T;
-                    image?: T;
-                    id?: T;
-                  };
-            };
-      };
-  formSection?:
-    | T
-    | {
-        heading?: T;
-        description?: T;
-        footerText?: T;
-      };
-  project?:
-    | T
-    | {
-        title?: T;
-        subtitle?: T;
-        tagline?: T;
-        description?: T;
-      };
+  hero?: T | HeroSectionPropsSelect<T>;
+  pillars?: T | PillarsSectionPropsSelect<T>;
+  sections?: T | SectionsPropsSelect<T>;
+  formSection?: T | FormSectionPropsSelect<T>;
+  project?: T | ProjectSectionPropsSelect<T>;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroSectionProps_select".
+ */
+export interface HeroSectionPropsSelect<T extends boolean = true> {
+  heading?: T;
+  subHeading?: T;
+  subHeroText?: T;
+  backgroundImage?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PillarsSectionProps_select".
+ */
+export interface PillarsSectionPropsSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        key?: T;
+        title?: T;
+        subtitle?: T;
+        icon?: T;
+        anchorId?: T;
+        id?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionsProps_select".
+ */
+export interface SectionsPropsSelect<T extends boolean = true> {
+  dimora?:
+    | T
+    | {
+        sectionTitle?: T;
+        title?: T;
+        description?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              caption?: T;
+              alt?: T;
+              id?: T;
+            };
+      };
+  gusto?:
+    | T
+    | {
+        sectionTitle?: T;
+        title?: T;
+        description?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              caption?: T;
+              alt?: T;
+              id?: T;
+            };
+      };
+  mirabilia?:
+    | T
+    | {
+        sectionTitle?: T;
+        title?: T;
+        description?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              caption?: T;
+              alt?: T;
+              id?: T;
+            };
+      };
+  amenita?:
+    | T
+    | {
+        sectionTitle?: T;
+        title?: T;
+        cards?:
+          | T
+          | {
+              cardtitle?: T;
+              cardDescription?: T;
+              image?: T;
+              id?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormSectionProps_select".
+ */
+export interface FormSectionPropsSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  footerText?: T;
+  form?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectSectionProps_select".
+ */
+export interface ProjectSectionPropsSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  tagline?: T;
+  description?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

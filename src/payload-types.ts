@@ -773,7 +773,6 @@ export interface PillarsSectionProps {
         key: 'dimora' | 'gusto' | 'mirabilia' | 'amenita';
         title: string;
         subtitle: string;
-        icon?: (string | null) | Media;
         /**
          * Anchor per scroll (es: dimora, gusto, mirabilia, amenita)
          */
@@ -787,82 +786,64 @@ export interface PillarsSectionProps {
  * via the `definition` "SectionsProps".
  */
 export interface SectionsProps {
-  dimora: {
-    /**
-     * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
-     */
-    sectionTitle: string;
-    /**
-     * Titolo principale della sezione
-     */
-    title: string;
-    /**
-     * Testo descrittivo della sezione
-     */
-    description: string;
-    images: {
-      image: string | Media;
-      caption?: string | null;
-      alt?: string | null;
-      id?: string | null;
-    }[];
-  };
-  gusto: {
-    /**
-     * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
-     */
-    sectionTitle: string;
-    /**
-     * Titolo principale della sezione
-     */
-    title: string;
-    /**
-     * Testo descrittivo della sezione
-     */
-    description: string;
-    images: {
-      image: string | Media;
-      caption?: string | null;
-      alt?: string | null;
-      id?: string | null;
-    }[];
-  };
-  mirabilia: {
-    /**
-     * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
-     */
-    sectionTitle: string;
-    /**
-     * Titolo principale della sezione
-     */
-    title: string;
-    /**
-     * Testo descrittivo della sezione
-     */
-    description: string;
-    images: {
-      image: string | Media;
-      caption?: string | null;
-      alt?: string | null;
-      id?: string | null;
-    }[];
-  };
-  amenita: {
-    /**
-     * Titolo della sezione (es: Amenità / Amenities)
-     */
-    sectionTitle: string;
-    /**
-     * Titolo della sezione (es: Amenità / Amenities)
-     */
-    title: string;
-    cards: {
-      cardtitle: string;
-      cardDescription: string;
-      image: string | Media;
-      id?: string | null;
-    }[];
-  };
+  dimora: GalleryContentProps;
+  gusto: GalleryContentProps;
+  mirabilia: GalleryContentProps;
+  amenita: ActivitySectionProps;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryContentProps".
+ */
+export interface GalleryContentProps {
+  /**
+   * Titolo della sezione (es: Dimora, Gusto, Mirabilia)
+   */
+  sectionTitle: string;
+  /**
+   * Titolo principale della sezione
+   */
+  title: string;
+  /**
+   * Sottotitolo della sezione
+   */
+  subtitle?: string | null;
+  /**
+   * Testo descrittivo della sezione
+   */
+  description: string;
+  images: {
+    image: string | Media;
+    id?: string | null;
+  }[];
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ActivitySectionProps".
+ */
+export interface ActivitySectionProps {
+  /**
+   * Titolo della sezione (es: Amenità / Amenities)
+   */
+  sectionTitle: string;
+  /**
+   * Titolo della sezione (es: Amenità / Amenities)
+   */
+  title: string;
+  /**
+   * Sottotitolo della sezione (es: Amenità / Amenities)
+   */
+  subtitle?: string | null;
+  /**
+   * Descrizione della sezione
+   */
+  description?: string | null;
+  cards: {
+    cardtitle: string;
+    cardDescription: string;
+    image: string | Media;
+    id?: string | null;
+  }[];
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -933,7 +914,6 @@ export interface PillarsSectionPropsSelect<T extends boolean = true> {
         key?: T;
         title?: T;
         subtitle?: T;
-        icon?: T;
         anchorId?: T;
         id?: T;
       };
@@ -943,64 +923,43 @@ export interface PillarsSectionPropsSelect<T extends boolean = true> {
  * via the `definition` "SectionsProps_select".
  */
 export interface SectionsPropsSelect<T extends boolean = true> {
-  dimora?:
+  dimora?: T | GalleryContentPropsSelect<T>;
+  gusto?: T | GalleryContentPropsSelect<T>;
+  mirabilia?: T | GalleryContentPropsSelect<T>;
+  amenita?: T | ActivitySectionPropsSelect<T>;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryContentProps_select".
+ */
+export interface GalleryContentPropsSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  title?: T;
+  subtitle?: T;
+  description?: T;
+  images?:
     | T
     | {
-        sectionTitle?: T;
-        title?: T;
-        description?: T;
-        images?:
-          | T
-          | {
-              image?: T;
-              caption?: T;
-              alt?: T;
-              id?: T;
-            };
+        image?: T;
+        id?: T;
       };
-  gusto?:
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ActivitySectionProps_select".
+ */
+export interface ActivitySectionPropsSelect<T extends boolean = true> {
+  sectionTitle?: T;
+  title?: T;
+  subtitle?: T;
+  description?: T;
+  cards?:
     | T
     | {
-        sectionTitle?: T;
-        title?: T;
-        description?: T;
-        images?:
-          | T
-          | {
-              image?: T;
-              caption?: T;
-              alt?: T;
-              id?: T;
-            };
-      };
-  mirabilia?:
-    | T
-    | {
-        sectionTitle?: T;
-        title?: T;
-        description?: T;
-        images?:
-          | T
-          | {
-              image?: T;
-              caption?: T;
-              alt?: T;
-              id?: T;
-            };
-      };
-  amenita?:
-    | T
-    | {
-        sectionTitle?: T;
-        title?: T;
-        cards?:
-          | T
-          | {
-              cardtitle?: T;
-              cardDescription?: T;
-              image?: T;
-              id?: T;
-            };
+        cardtitle?: T;
+        cardDescription?: T;
+        image?: T;
+        id?: T;
       };
 }
 /**

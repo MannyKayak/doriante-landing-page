@@ -1,12 +1,38 @@
 .doriante-text.arial {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
+  font-family: Arial;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 32px;
+  letter-spacing: 0px;
 }
 
 .doriante-text.serif {
   font-family: var(--font-ogg);
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 40px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
-.doriante-text.text-xxs {
-  font-size: 0.625rem;
+.doriante-text.serif.loose {
+  line-height: 160%;
+}
+
+p {
+  margin: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .doriante-text.arial {
+    font-size: 24px;
+  }
+
+  .doriante-text.serif {
+    font-size: 24px;
+  }
 }

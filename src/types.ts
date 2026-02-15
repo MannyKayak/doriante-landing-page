@@ -1,20 +1,3 @@
-export type GallerySectionProp = {
-  contentData: GalleryCard[]
-}
-
-export type FeatureCard = {
-  id: number
-  title: string
-  description: string
-}
-
-export type GalleryCard = {
-  id: number
-  title: string
-  images: string[]
-  details: string[]
-}
-
 export type DorianteTitleProps = {
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
@@ -33,26 +16,4 @@ export type DorianteTextProps = {
   weight?: 'normal' | 'bold' | 'semibold'
   className?: string
   style?: 'arial' | 'serif'
-}
-
-export type ActivitySectionProps = {
-  title: string
-  description?: string
-  data: ActivityCard[]
-}
-export type ActivityCard = {
-  id: number
-  title: string
-  description: string
-  imageUrl: string
-}
-
-export type AboutUsProps = {
-  title: string
-  description: string
-  imageUrl: string
-}
-
-export type ActivityCardProps = {
-  item: ActivityCard
 }

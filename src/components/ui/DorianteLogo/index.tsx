@@ -7,15 +7,13 @@ type DoriantaLogoProps = {
 
 export const DorinateLogo: FC<DoriantaLogoProps> = ({ variant }) => {
   return (
-    <>
-      <Image
-        src={`/assets/svg/doriante_logo${variant === 'light' ? '_light.svg' : '.svg'}`}
-        alt="Logo"
-        width={1400}
-        height={300}
-        className="w-full"
-        draggable={false}
-      />
-    </>
+    <Image
+      src={`/assets/svg/doriante_logo${variant === 'light' ? '_light.svg' : '.svg'}`}
+      alt="Logo"
+      width={1400}
+      height={300}
+      className="w-full"
+      draggable={false}
+    />
   )
 }

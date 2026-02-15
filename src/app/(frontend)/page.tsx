@@ -9,11 +9,11 @@ import './styles.css'
 import { PillarsSection } from '@/components/PillarsSection'
 import { HeroSection } from '@/components/HeroSection'
 import { GallerySection } from '@/components/GallerySection'
-import SubHeroSection, { SubHeroSectionProps } from '@/components/SubHeroSection'
-import { ActivitySectionProps, GalleryCard, FeatureCard } from '../../types'
+import SubHeroSection from '@/components/SubHeroSection'
 import { AmenitySection } from '@/components/AmenitySection'
 import { AboutUs } from '@/components/AboutUs'
 import FormSection from '@/components/FormSection'
+import DorianteText from '@/components/ui/DorianteText'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -29,91 +29,6 @@ export default async function HomePage() {
   // - bisogna capire il multilingua a i form
   const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
-  const subHeroConfig: SubHeroSectionProps = {
-    text: 'Doriante è un rifugio d’autore ad Ameno, sulle colline del Lago d’Orta. Cinque suite di charme immerse in un paesaggio UNESCO, dove il design essenziale incontra l’arte contemporanea e una cucina che celebra il territorio. Un luogo per rallentare, respirare e ritrovare il proprio ritmo.',
-  }
-
-  const features: FeatureCard[] = [
-    {
-      id: 1,
-      title: 'Luxury\nAccommodation',
-      description:
-        'Our elegantly appointed rooms and suites offer the perfect blend of rustic charm and modern luxury, ensuring a restful stay.',
-    },
-    {
-      id: 2,
-      title: 'Farm-to-Table\nRestaurant',
-      description:
-        'Experience the authentic flavors of Tuscany with our seasonal menu featuring ingredients from our own garden and local producers.',
-    },
-    {
-      id: 3,
-      title: 'Art & Cultural\nExperiences',
-      description:
-        'Immerse yourself in Tuscan culture through our on-site art gallery, cooking classes, wine tastings, and guided excursions.',
-    },
-  ]
-
-  const contentData: GalleryCard[] = [
-    {
-      id: 10,
-      title: 'Where Art Lives',
-      images: [
-        '/assets/images/photo1.png',
-        '/assets/images/photo2.png',
-        '/assets/images/photo3.png',
-      ],
-      details: [
-        "Each room at Doriante is a carefully curated gallery space, featuring works by emerging and established artists. Wake up surrounded by beauty, with views of Lago d'Orta stretching beyond your windows.",
-        'Our accommodations blend minimalist Italian design with contemporary comfort, creating spaces that inspire contemplation and connection with the artistic heritage of the region.',
-        'Experience slow living at its finest - where every detail is designed to encourage mindfulness, creativity, and deep restoration.',
-      ],
-    },
-  ]
-
-  const AmenitySectionData: ActivitySectionProps = {
-    title: 'Esperienze e Territorio',
-    // description: undefined, // volutamente assente
-    data: [
-      {
-        id: 1,
-        title: 'Kayak al tramonto',
-        description: 'Un’esperienza rilassante in kayak tra luci calde e riflessi sull’acqua.',
-        imageUrl: '/assets/images/cardPic.png',
-      },
-      {
-        id: 2,
-        title: 'Passeggiata in vigna',
-        description: 'Tour guidato tra i filari con degustazione di vini locali.',
-        imageUrl: '/assets/images/cardPic.png',
-      },
-      {
-        id: 3,
-        title: 'Cena gourmet',
-        description: 'Percorso gastronomico con piatti tipici rivisitati in chiave moderna.',
-        imageUrl: '/assets/images/cardPic.png',
-      },
-      {
-        id: 4,
-        title: 'Escursione panoramica',
-        description: 'Trekking leggero con viste mozzafiato sulla valle.',
-        imageUrl: '/assets/images/cardPic.png',
-      },
-      {
-        id: 5,
-        title: 'Relax in spa',
-        description: 'Momento di benessere tra sauna, massaggi e piscina riscaldata.',
-        imageUrl: '/assets/images/cardPic.png',
-      },
-      {
-        id: 6,
-        title: 'Workshop creativo',
-        description: 'Laboratorio artistico con materiali naturali e tecniche miste.',
-        imageUrl: '/assets/images/cardPic.png',
-      },
-    ],
-  }
-
   const aboutUsData = {
     title: 'Chi Siamo',
     description:
@@ -123,16 +38,19 @@ export default async function HomePage() {
 
   return (
     <div className="bg-dark">
+      <div className="hidden text-center py-4 fixed top-0 bg-dark z-20 w-full opacity-60 ">
+        <DorianteText className="text-white text-serif" style="serif">
+          Prossima aperture primavera 2027
+        </DorianteText>{' '}
+      </div>
       <HeroSection {...landingData.hero} />
-      <SubHeroSection text={subHeroConfig.text} />
-      <PillarsSection features={features} />
-      <GallerySection contentData={contentData} />
-      <GallerySection contentData={contentData} />
-      <GallerySection contentData={contentData} />
-      <AmenitySection {...AmenitySectionData} />
+      <SubHeroSection text={landingData.hero.subHeroText} />
+      <PillarsSection {...landingData.pillars} />
+      <GallerySection {...landingData.sections} />
+      <AmenitySection {...landingData.sections.amenita} />
 
-      <FormSection />
-      <AboutUs {...aboutUsData} />
+      {/* <FormSection /> */}
+      {/* <AboutUs {...aboutUsData} /> */}
     </div>
   )
 }

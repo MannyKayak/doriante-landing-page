@@ -9,6 +9,7 @@ export const createGallerySectionFields = ({ name, label }: GallerySectionArgs):
   name,
   type: 'group',
   label,
+  interfaceName: 'GalleryContentProps',
   fields: [
     {
       name: 'sectionTitle',
@@ -28,6 +29,16 @@ export const createGallerySectionFields = ({ name, label }: GallerySectionArgs):
       required: true,
       admin: {
         description: 'Titolo principale della sezione',
+      },
+    },
+    {
+      name: 'subtitle',
+      label: 'Sottotitolo',
+      type: 'textarea',
+      localized: true,
+      required: false,
+      admin: {
+        description: 'Sottotitolo della sezione',
       },
     },
     {
@@ -53,20 +64,6 @@ export const createGallerySectionFields = ({ name, label }: GallerySectionArgs):
           type: 'upload',
           relationTo: 'media',
           required: true,
-        },
-        {
-          name: 'caption',
-          label: 'Didascalia',
-          type: 'textarea',
-          localized: true,
-          required: false,
-        },
-        {
-          name: 'alt',
-          label: 'Alt',
-          type: 'text',
-          localized: true,
-          required: false,
         },
       ],
     },

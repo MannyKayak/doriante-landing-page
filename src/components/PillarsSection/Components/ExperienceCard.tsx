@@ -1,4 +1,5 @@
 import DorianteText from '@/components/ui/DorianteText'
+import DorianteTitle from '@/components/ui/DorianteTitle'
 import React from 'react'
 
 export type ExperienceCardProps = {
@@ -8,12 +9,12 @@ export type ExperienceCardProps = {
 
 export const ExperienceCard: React.FC<ExperienceCardProps> = ({ title, description }) => {
   return (
-    <article className="flex flex-col w-full">
-      <DorianteText color="light" align="center">
+    <article className="flex flex-col w-full ">
+      <DorianteTitle tag="h1" className="text-light text-center pb-4">
         {title}
-      </DorianteText>
+      </DorianteTitle>
 
-      <DorianteText color="white" size="lg" align="center">
+      <DorianteText color="white" style="arial" className="flex justify-center text-center ">
         {description}
       </DorianteText>
 

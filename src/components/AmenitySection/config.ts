@@ -4,6 +4,7 @@ export const amenitiesSectionFields: Field = {
   name: 'amenita',
   type: 'group',
   label: 'Amenità',
+  interfaceName: 'ActivitySectionProps',
   fields: [
     {
       name: 'sectionTitle',
@@ -23,6 +24,26 @@ export const amenitiesSectionFields: Field = {
       required: true,
       admin: {
         description: 'Titolo della sezione (es: Amenità / Amenities)',
+      },
+    },
+    {
+      name: 'subtitle',
+      label: 'Sottotitolo Sezione',
+      type: 'textarea',
+      localized: true,
+      required: false,
+      admin: {
+        description: 'Sottotitolo della sezione (es: Amenità / Amenities)',
+      },
+    },
+    {
+      name: 'description',
+      label: 'Descrizione',
+      type: 'textarea',
+      localized: true,
+      required: false,
+      admin: {
+        description: 'Descrizione della sezione',
       },
     },
     {

@@ -8,7 +8,7 @@ function cn(...classes: Array<string | undefined | false | null>) {
 
 export default function DorianteSection({ className, children, ...props }: DorianteSectionProps) {
   return (
-    <section {...props} className={cn('w-full overflow-hidden px-20', className)}>
+    <section {...props} className={cn('w-full overflow-hidden sm:px-40 px-4', className)}>
       {children}
     </section>
   )

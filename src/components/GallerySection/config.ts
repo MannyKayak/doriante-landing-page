@@ -1,5 +1,5 @@
 import type { Field } from 'payload'
-import { createGallerySectionFields } from './GallerySectionConfig'
+import { createGallerySectionFields } from './components/GallerySectionConfig'
 import { amenitiesSectionFields } from '../AmenitySection/config'
 
 export const sectionsFields: Field[] = [

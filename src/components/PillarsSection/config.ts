@@ -48,13 +48,6 @@ export const pillarsFields: Field[] = [
             required: true,
           },
           {
-            name: 'icon',
-            label: 'Icona',
-            type: 'upload',
-            relationTo: 'media',
-            required: false,
-          },
-          {
             name: 'anchorId',
             label: 'Anchor ID',
             type: 'text',

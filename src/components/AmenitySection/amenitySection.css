@@ -7,3 +7,27 @@
   letter-spacing: 6px;
   text-transform: uppercase;
 }
+
+.swiper-pagination-bullet {
+  background: var(--color-gray) !important; /* colore pallini inattivi */
+
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Bullet attivo */
+.swiper-pagination-bullet-active {
+  background: var(--color-light) !important; /* dorato Doriante */
+  width: 14px !important;
+  height: 14px !important;
+  padding-bottom: 10px !important;
+  opacity: 1 !important;
+}
+
+.doriante-swiper .swiper-pagination {
+  position: relative;
+  bottom: auto;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-30px);
+}

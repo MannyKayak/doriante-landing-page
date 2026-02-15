@@ -96,11 +96,13 @@ export interface Config {
   };
   globals: {
     landing: Landing;
+    footer: Footer;
   };
   globalsSelect: {
     landing: LandingSelect<false> | LandingSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
   };
-  locale: 'en' | 'it';
+  locale: 'it' | 'en';
   user: User & {
     collection: 'users';
   };
@@ -870,6 +872,33 @@ export interface ProjectSectionProps {
    */
   tagline: string;
   description: string;
+  image: string | Media;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  footer: {
+    address: string;
+    contacts: {
+      text: string;
+      phone: string;
+      email: string;
+    };
+    socials: {
+      cta: string;
+      instagram?: string | null;
+      facebook?: string | null;
+      linkedin?: string | null;
+      tiktok?: string | null;
+    };
+    copyright: string;
+    text: string;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -981,6 +1010,39 @@ export interface ProjectSectionPropsSelect<T extends boolean = true> {
   subtitle?: T;
   tagline?: T;
   description?: T;
+  image?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  footer?:
+    | T
+    | {
+        address?: T;
+        contacts?:
+          | T
+          | {
+              text?: T;
+              phone?: T;
+              email?: T;
+            };
+        socials?:
+          | T
+          | {
+              cta?: T;
+              instagram?: T;
+              facebook?: T;
+              linkedin?: T;
+              tiktok?: T;
+            };
+        copyright?: T;
+        text?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

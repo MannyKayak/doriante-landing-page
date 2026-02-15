@@ -5,7 +5,7 @@ import GalleryContent from './components/GalleryContent'
 
 export const GallerySection: FC<SectionsProps> = ({ dimora, gusto, mirabilia }): JSX.Element => {
   return (
-    <DorianteSection className="py-8 bg-dark">
+    <DorianteSection className="py-8 bg-dark sm:!px-4 !px-0">
       {[dimora, gusto, mirabilia].map((section, index) => (
         <div key={section.sectionTitle} className="py-10">
           <GalleryContent {...section} reverse={index % 2 === 1} />

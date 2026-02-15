@@ -44,5 +44,12 @@ export const projectSectionFields: Field = {
       localized: true,
       required: true,
     },
+    {
+      name: 'image',
+      label: 'Immagine',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
   ],
 }

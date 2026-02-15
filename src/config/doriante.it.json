@@ -50,5 +50,22 @@
     "body": "Per molto tempo Doriante è esistito come luogo dell’immaginazione. Oggi ha preso forma ad Ameno, un borgo raccolto tra boschi e silenzi, affacciato sulla riva più quieta del Lago d’Orta.\nDoriante resta fedele alla sua anima sfuggente: sospeso tra bellezza, semplicità e natura, dove ogni angolo sussurra una storia. Il suo nome non appartiene a nessuna lingua, eppure parla a tutti. Evoca qualcosa di raro ma non pretenzioso, intimo e aperto al mondo. Ogni suite è un racconto breve, senza temi definiti — solo suggestioni in cui perdersi.",
     "closing": "Un luogo in cui l’arte si intreccia con l’abitare,\nil design dialoga con il territorio\ne la semplicità diventa eleganza.",
     "welcome": "Benvenuti"
+  },
+  "footer": {
+    "address": "Via alla Chiesa 1, Ameno (NO)",
+    "contacts": {
+      "phone": "+39 0322 123456",
+      "text": "Contatti:",
+      "email": "info@doriante.it"
+    },
+    "socials": {
+      "cta": "Seguici",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "tiktok": "TikTok"
+    },
+    "copyright": "© 2024 Doriante. Tutti i diritti riservati.",
+    "text": "Doriante si trova ad Ameno, borgo medievale a pochi minuti dal Lago d’Orta."
   }
 }

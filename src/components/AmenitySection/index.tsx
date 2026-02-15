@@ -64,7 +64,7 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
             key={item.id}
             className="
               flex w-full
-              max-w-88
+              max-w-70
             "
           >
             <ActivityCard {...item} />

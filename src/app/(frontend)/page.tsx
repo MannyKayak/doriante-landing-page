@@ -14,6 +14,7 @@ import { AmenitySection } from '@/components/AmenitySection'
 import { AboutUs } from '@/components/AboutUs'
 import FormSection from '@/components/FormSection'
 import DorianteText from '@/components/ui/DorianteText'
+import { L } from 'vitest/dist/chunks/reporters.d.DL9pg5DB.js'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -48,9 +49,8 @@ export default async function HomePage() {
       <PillarsSection {...landingData.pillars} />
       <GallerySection {...landingData.sections} />
       <AmenitySection {...landingData.sections.amenita} />
-
-      {/* <FormSection /> */}
-      {/* <AboutUs {...aboutUsData} /> */}
+      <FormSection {...landingData.formSection} />
+      <AboutUs {...landingData.project} />
     </div>
   )
 }

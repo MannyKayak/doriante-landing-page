@@ -15,6 +15,7 @@ import { NewsletterSubscribers } from './collections/NewsletterSubscribers'
 import { NewsletterCampaigns } from './collections/NewsletterCampaigns'
 import { endpoints } from './app/(payload)/config/endpoints'
 import { mailSubmissionHook } from './hooks/mailSubmission'
+import { Footer } from './globals/Footer'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,11 +28,15 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, NewsletterSubscribers, NewsletterCampaigns],
-  globals: [Landing],
+  globals: [Landing, Footer],
   editor: lexicalEditor(),
   localization: {
-    locales: ['en', 'it'],
     defaultLocale: 'it',
+    locales: [
+      { code: 'it', label: 'Italiano' },
+      { code: 'en', label: 'English' },
+    ],
+    fallback: true, // utile: se manca EN, usa IT
   },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -14,13 +14,13 @@ export const ActivityCard: React.FC<{
   id?: string | null
 }> = ({ cardtitle, cardDescription, image, id }) => {
   return (
-    <div className="w-full overflow-hidden rounded-3xl bg-gray">
-      <div className="relative w-full h-[400px] aspect-[352px/400px] overflow-hidden">
+    <div className="w-full overflow-hidden sm:h-full h-[500px] rounded-3xl bg-gray mb-10">
+      <div className="relative w-full sm:h-[380px] h-[280px] aspect-[352px/400px] overflow-hidden">
         <DorianteImage fill use="mini-card" src={getUrlFromMedia(image)} alt={cardtitle} />
       </div>
 
       <div className="flex flex-col items-start gap-2 p-6">
-        <DorianteTitle tag="h4" color="dark" className="line-clamp-2">
+        <DorianteTitle tag="h4" color="dark" className="line-clamp-2 text-dark">
           {cardtitle}
         </DorianteTitle>
         <DorianteText size="base" color="dark" align="left" inline>

@@ -3,6 +3,8 @@ import './styles.css'
 import './globals.css'
 import { Footer } from '@/components/Footer'
 import { ogg } from '@/font/font'
+import payloadConfig from '@/payload.config'
+import { getPayload } from 'payload'
 
 export const metadata = {
   description:
@@ -12,12 +14,17 @@ export const metadata = {
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
-
+  const payload = await getPayload({ config: payloadConfig })
+  const footer = await payload.findGlobal({
+    slug: 'footer',
+    locale: 'it',
+    fallbackLocale: 'it',
+  })
   return (
     <html lang="en" className={`${ogg.variable}  antialiased`}>
       <body>
         <main>{children}</main>
-        <Footer />
+        <Footer data={footer} />
       </body>
     </html>
   )

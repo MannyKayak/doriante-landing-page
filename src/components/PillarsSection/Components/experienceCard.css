@@ -1,0 +1,13 @@
+.swiper-pagination-progressbar-fill {
+  background: var(--color-light) !important;
+}
+
+.swiper-pagination-progressbar {
+  background: rgba(238, 217, 164, 0.3) !important;
+  width: 33% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  bottom: 0 !important;
+  top: auto !important;
+}

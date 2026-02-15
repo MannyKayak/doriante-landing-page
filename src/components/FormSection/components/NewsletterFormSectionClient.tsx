@@ -5,9 +5,7 @@ import { useId, useMemo, useState } from 'react'
 
 type Props = {
   formId: string
-  title: string
-  description: string
-  privacyText: string
+
   className?: string
   endpoint?: string
 }
@@ -19,9 +17,7 @@ type PayloadFormSubmissionBody = {
 
 export default function NewsletterFormSectionClient({
   formId,
-  title,
-  description,
-  privacyText,
+
   className = '',
   endpoint = '/api/form-submissions',
 }: Props) {
@@ -94,16 +90,8 @@ export default function NewsletterFormSectionClient({
   }
 
   return (
-    <section
-      className={['w-full bg-[#E8D5A6] text-[#0B1C2A]', 'py-16 sm:py-20', className].join(' ')}
-    >
+    <section className={['w-full ', 'py-16 sm:py-20', className].join(' ')}>
       <div className="mx-auto w-full max-w-3xl px-6 text-center">
-        <h2 className="font-serif text-4xl sm:text-5xl tracking-tight">{title}</h2>
-
-        <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed whitespace-pre-line">
-          {description}
-        </p>
-
         <form
           onSubmit={handleSubmit}
           className="mx-auto mt-12 flex w-full max-w-xl flex-col items-center justify-center gap-4 sm:flex-row"
@@ -142,8 +130,6 @@ export default function NewsletterFormSectionClient({
             {status === 'loading' ? 'Sending…' : 'Subscribe'}
           </button>
         </form>
-
-        <p className="mt-10 text-sm text-black/70">{privacyText}</p>
 
         {message ? (
           <p

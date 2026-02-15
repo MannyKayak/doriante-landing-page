@@ -21,7 +21,7 @@ const GalleryContent = ({
 }: GalleryContentProps & { reverse?: boolean }) => {
   return (
     <div
-      className={`flex flex-col ${reverse ? 'sm:flex-row-reverse justify-end' : 'sm:flex-row'} w-full`}
+      className={`flex flex-col justify-start ${reverse ? 'sm:flex-row-reverse justify-end' : 'sm:flex-row'} w-full`}
     >
       <div className="flex w-full sm:w-1/2 aspect-[559px/672px] ">
         <Swiper
@@ -46,15 +46,15 @@ const GalleryContent = ({
           ))}
         </Swiper>
       </div>
-      <div className="flex flex-col justify-center mx-10">
-        <div className="flex items-center gap-4 mb-8">
+      <div className="flex flex-col justify-center sm:mx-10 px-4">
+        <div className="flex items-center gap-4 sm:pt-0 pt-8">
           <div className="bg-light w-18 h-[2px]" />
           <DorianteTitle tag="h2" className=" text-light section-title">
             {title}
           </DorianteTitle>
         </div>
 
-        <DorianteTitle tag="h1" className="!text-[64px] text-light ">
+        <DorianteTitle tag="h1" className="!text-[64px] text-light pt-4">
           {subtitle}
         </DorianteTitle>
         <div className="mt-8">

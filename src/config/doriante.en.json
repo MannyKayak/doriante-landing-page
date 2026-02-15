@@ -50,5 +50,22 @@
     "body": "For a long time, Doriante existed as a place of the imagination. Today it has taken shape in Ameno, a secluded village among woods and silence, overlooking the quietest shore of Lake Orta.\nDoriante remains faithful to its elusive soul: suspended between beauty, simplicity, and nature, where every corner whispers a story. Its name belongs to no language, yet it speaks to everyone. It evokes something rare without pretence, intimate and open to the world. Each suite is a short tale, with no fixed themes — only suggestions in which to lose oneself.",
     "closing": "A place where art intertwines with living,\ndesign enters into dialogue with the land,\nand simplicity becomes elegance.",
     "welcome": "Welcome"
+  },
+  "footer": {
+    "address": "Via alla Chiesa 1, Ameno (NO), Italy",
+    "contacts": {
+      "phone": "+39 0322 123456",
+      "text": "Contacts:",
+      "email": "info@doriante.it"
+    },
+    "socials": {
+      "cta": "Follow us",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "tiktok": "TikTok"
+    },
+    "copyright": "© 2024 Doriante. All rights reserved.",
+    "text": "Doriante is located in Ameno, a medieval village just a few minutes from Lake Orta."
   }
 }

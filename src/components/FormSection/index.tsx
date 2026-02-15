@@ -1,6 +1,10 @@
 // src/components/FormSection/LandingFormSection.tsx
 
+import { FormSectionProps } from '@/payload-types'
 import NewsletterFormSectionClient from './components/NewsletterFormSectionClient'
+import DorianteSection from '../ui/DorianteSection'
+import DorianteText from '../ui/DorianteText'
+import DorianteTitle from '../ui/DorianteTitle'
 
 type LandingResponse = {
   formSection?: {
@@ -23,24 +27,26 @@ async function getLanding(locale: 'it' | 'en' = 'it'): Promise<LandingResponse> 
   return res.json()
 }
 
-export default async function FormSection({ locale = 'it' }: { locale?: 'it' | 'en' }) {
-  const landing = await getLanding(locale)
-
-  const formSection = landing.formSection
-
-  const formId =
-    typeof formSection?.form === 'string'
-      ? formSection.form
-      : formSection?.form && typeof formSection.form === 'object'
-        ? formSection.form.id
-        : ''
+export default async function FormSection({
+  heading,
+  description,
+  footerText,
+  form,
+}: FormSectionProps) {
+  const formId = typeof form === 'string' ? form : form && typeof form === 'object' ? form.id : ''
 
   return (
-    <NewsletterFormSectionClient
-      formId={formId}
-      title={formSection?.heading || ''}
-      description={formSection?.description || ''}
-      privacyText={formSection?.footerText || ''}
-    />
+    <DorianteSection className="bg-light h-screen flex flex-col pt-10 ">
+      <DorianteTitle tag="h1" className="text-center text-dark !text-3xl">
+        {heading}
+      </DorianteTitle>
+      <DorianteTitle tag="h2" className="text-center text-dark !text-2xl pt-20">
+        {description}
+      </DorianteTitle>
+      <NewsletterFormSectionClient formId={formId} />
+      <DorianteText className="doriante-text arial !text-md text-center text-dark">
+        {footerText}
+      </DorianteText>
+    </DorianteSection>
   )
 }

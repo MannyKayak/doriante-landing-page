@@ -31,11 +31,5 @@ export const formSectionFields: Field = {
           'Testo sotto al form (es: privacy + riferimento alla disiscrizione). Il link lo gestiamo lato frontend.',
       },
     },
-    {
-      name: 'form',
-      label: 'Configura Form',
-      type: 'relationship',
-      relationTo: 'forms',
-    },
   ],
 }

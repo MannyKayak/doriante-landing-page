@@ -69,8 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    'newsletter-subscribers': NewsletterSubscriber;
-    'newsletter-campaigns': NewsletterCampaign;
     forms: Form;
     'form-submissions': FormSubmission;
     'payload-kv': PayloadKv;
@@ -82,8 +80,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'newsletter-subscribers': NewsletterSubscribersSelect<false> | NewsletterSubscribersSelect<true>;
-    'newsletter-campaigns': NewsletterCampaignsSelect<false> | NewsletterCampaignsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -171,37 +167,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "newsletter-subscribers".
- */
-export interface NewsletterSubscriber {
-  id: string;
-  email: string;
-  status: 'subscribed' | 'unsubscribed';
-  lastMailchimpSyncStatus?: ('success' | 'error' | 'skipped') | null;
-  lastMailchimpSyncAt?: string | null;
-  mailchimpSyncError?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "newsletter-campaigns".
- */
-export interface NewsletterCampaign {
-  id: string;
-  subject: string;
-  /**
-   * HTML della newsletter. (Per ora semplice: poi possiamo passare a RichText/template.)
-   */
-  html: string;
-  status: 'draft' | 'sent' | 'sending' | 'failed';
-  sentAt?: string | null;
-  lastError?: string | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -427,14 +392,6 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'newsletter-subscribers';
-        value: string | NewsletterSubscriber;
-      } | null)
-    | ({
-        relationTo: 'newsletter-campaigns';
-        value: string | NewsletterCampaign;
-      } | null)
-    | ({
         relationTo: 'forms';
         value: string | Form;
       } | null)
@@ -523,32 +480,6 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "newsletter-subscribers_select".
- */
-export interface NewsletterSubscribersSelect<T extends boolean = true> {
-  email?: T;
-  status?: T;
-  lastMailchimpSyncStatus?: T;
-  lastMailchimpSyncAt?: T;
-  mailchimpSyncError?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "newsletter-campaigns_select".
- */
-export interface NewsletterCampaignsSelect<T extends boolean = true> {
-  subject?: T;
-  html?: T;
-  status?: T;
-  sentAt?: T;
-  lastError?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -858,7 +789,6 @@ export interface FormSectionProps {
    * Testo sotto al form (es: privacy + riferimento alla disiscrizione). Il link lo gestiamo lato frontend.
    */
   footerText: string;
-  form?: (string | null) | Form;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -991,7 +921,6 @@ export interface FormSectionPropsSelect<T extends boolean = true> {
   heading?: T;
   description?: T;
   footerText?: T;
-  form?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

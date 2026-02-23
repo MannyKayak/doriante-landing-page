@@ -11,10 +11,6 @@ import { resendAdapter } from '@payloadcms/email-resend'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Landing } from './globals/Landing'
-import { NewsletterSubscribers } from './collections/NewsletterSubscribers'
-import { NewsletterCampaigns } from './collections/NewsletterCampaigns'
-import { endpoints } from './app/(payload)/config/endpoints'
-import { mailSubmissionHook } from './hooks/mailSubmission'
 import { Footer } from './globals/Footer'
 
 const filename = fileURLToPath(import.meta.url)
@@ -27,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, NewsletterSubscribers, NewsletterCampaigns],
+  collections: [Users, Media],
   globals: [Landing, Footer],
   editor: lexicalEditor(),
   localization: {
@@ -51,8 +47,6 @@ export default buildConfig({
     defaultFromAddress: 'newsletter@tuodominio.it',
     defaultFromName: 'Doriante',
   }),
-  endpoints: endpoints,
-
   plugins: [
     formBuilderPlugin({
       fields: {
@@ -75,9 +69,6 @@ export default buildConfig({
           read: ({ req }) => Boolean(req.user),
           update: ({ req }) => Boolean(req.user),
           delete: ({ req }) => Boolean(req.user),
-        },
-        hooks: {
-          afterChange: [mailSubmissionHook],
         },
       },
     }),

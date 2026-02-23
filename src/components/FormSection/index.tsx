@@ -10,7 +10,6 @@ export default async function FormSection({
   heading,
   description,
   footerText,
-  form: _form,
 }: FormSectionProps) {
   return (
     <DorianteSection className="bg-light h-screen flex flex-col pt-10 ">

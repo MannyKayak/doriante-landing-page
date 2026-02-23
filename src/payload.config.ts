@@ -5,8 +5,6 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
-import { resendAdapter } from '@payloadcms/email-resend'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -42,35 +40,5 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
   }),
   sharp,
-  email: resendAdapter({
-    apiKey: process.env.RESEND_API_KEY || '',
-    defaultFromAddress: 'newsletter@tuodominio.it',
-    defaultFromName: 'Doriante',
-  }),
-  plugins: [
-    formBuilderPlugin({
-      fields: {
-        email: true,
-      },
-      defaultToEmail: 'test@example.com',
-
-      formOverrides: {
-        access: {
-          read: ({ req }) => Boolean(req.user),
-          create: ({ req }) => Boolean(req.user),
-          update: ({ req }) => Boolean(req.user),
-          delete: ({ req }) => Boolean(req.user),
-        },
-      },
-
-      formSubmissionOverrides: {
-        access: {
-          create: () => true,
-          read: ({ req }) => Boolean(req.user),
-          update: ({ req }) => Boolean(req.user),
-          delete: ({ req }) => Boolean(req.user),
-        },
-      },
-    }),
-  ],
+  plugins: [],
 })

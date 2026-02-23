@@ -180,6 +180,9 @@ export interface NewsletterSubscriber {
   id: string;
   email: string;
   status: 'subscribed' | 'unsubscribed';
+  lastMailchimpSyncStatus?: ('success' | 'error' | 'skipped') | null;
+  lastMailchimpSyncAt?: string | null;
+  mailchimpSyncError?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -528,6 +531,9 @@ export interface MediaSelect<T extends boolean = true> {
 export interface NewsletterSubscribersSelect<T extends boolean = true> {
   email?: T;
   status?: T;
+  lastMailchimpSyncStatus?: T;
+  lastMailchimpSyncAt?: T;
+  mailchimpSyncError?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -741,12 +747,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Landing {
   id: string;
-  seo?: {
-    metaTitle?: string | null;
-    metaDescription?: string | null;
-    ogImage?: (string | null) | Media;
-    noIndex?: boolean | null;
-  };
   hero: HeroSectionProps;
   pillars?: PillarsSectionProps;
   sections: SectionsProps;
@@ -905,14 +905,6 @@ export interface Footer {
  * via the `definition` "landing_select".
  */
 export interface LandingSelect<T extends boolean = true> {
-  seo?:
-    | T
-    | {
-        metaTitle?: T;
-        metaDescription?: T;
-        ogImage?: T;
-        noIndex?: T;
-      };
   hero?: T | HeroSectionPropsSelect<T>;
   pillars?: T | PillarsSectionPropsSelect<T>;
   sections?: T | SectionsPropsSelect<T>;

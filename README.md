@@ -65,3 +65,47 @@ That's it! The Docker instance will help you get up and running quickly while al
 ## Questions
 
 If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+
+## Mailchimp Newsletter Sync
+
+This project uses Mailchimp as the only newsletter source of truth for subscribe flow.
+
+### Required env vars
+
+Add these values in `.env`:
+
+```bash
+MAILCHIMP_API_KEY=your-mailchimp-api-key
+MAILCHIMP_SERVER_PREFIX=us21
+MAILCHIMP_AUDIENCE_ID=your-mailchimp-audience-id
+```
+
+- `MAILCHIMP_SERVER_PREFIX`: from your API key suffix (example: `abcd-us21` -> `us21`).
+- `MAILCHIMP_AUDIENCE_ID`: Mailchimp Audience/List ID (Audience -> Settings -> Audience name and defaults).
+
+### Vercel setup
+
+In Vercel dashboard:
+1. Project -> Settings -> Environment Variables
+2. Add `MAILCHIMP_API_KEY`, `MAILCHIMP_SERVER_PREFIX`, `MAILCHIMP_AUDIENCE_ID`
+3. Set them for `Preview` and `Production`
+4. Redeploy
+
+### Quick test with curl
+
+```bash
+curl -X POST http://localhost:3000/api/newsletter/subscribe \
+  -H "Content-Type: application/json" \
+  -d "{\"email\":\"test+mailchimp@example.com\",\"consent\":true}"
+```
+
+Expected success message:
+- `Controlla la tua email per confermare l'iscrizione.`
+
+### Double opt-in notes
+
+- New contact is created/updated with `pending` status (double opt-in).
+- Mailchimp sends confirmation email to the user.
+- If contact is already `subscribed`, API returns a dedicated "already subscribed" success response.
+- If contact is already `pending`, API returns a dedicated "already pending" success response.
+- If a contact is `unsubscribed` or `cleaned`, Mailchimp may require additional compliance steps before re-subscribe.

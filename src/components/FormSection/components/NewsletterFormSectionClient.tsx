@@ -110,8 +110,8 @@ export default function NewsletterFormSectionClient({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={[
-              'h-11 w-full rounded-md bg-white px-4 text-sm outline-none',
-              'placeholder:text-black/40',
+              'h-11 w-full rounded-md bg-white px-4 text-sm text-black outline-none',
+              'placeholder:text-black/50',
               'ring-1 ring-black/10 focus:ring-2 focus:ring-black/40',
               'sm:flex-1',
             ].join(' ')}

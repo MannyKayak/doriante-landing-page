@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { newsletterSubscriberMailchimpSyncHook } from '@/hooks/newsletterSubscriberMailchimpSync'
 
 export const NewsletterSubscribers: CollectionConfig = {
   slug: 'newsletter-subscribers',
@@ -11,6 +12,9 @@ export const NewsletterSubscribers: CollectionConfig = {
     create: ({ req }) => Boolean(req.user),
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => Boolean(req.user),
+  },
+  hooks: {
+    afterChange: [newsletterSubscriberMailchimpSyncHook],
   },
   fields: [
     {
@@ -28,6 +32,33 @@ export const NewsletterSubscribers: CollectionConfig = {
         { label: 'Subscribed', value: 'subscribed' },
         { label: 'Unsubscribed', value: 'unsubscribed' },
       ],
+    },
+    {
+      name: 'lastMailchimpSyncStatus',
+      type: 'select',
+      options: [
+        { label: 'Success', value: 'success' },
+        { label: 'Error', value: 'error' },
+        { label: 'Skipped', value: 'skipped' },
+      ],
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
+      name: 'lastMailchimpSyncAt',
+      type: 'date',
+      admin: {
+        readOnly: true,
+        position: 'sidebar',
+      },
+    },
+    {
+      name: 'mailchimpSyncError',
+      type: 'textarea',
+      admin: {
+        readOnly: true,
+      },
     },
   ],
 }

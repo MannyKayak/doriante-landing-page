@@ -16,7 +16,7 @@ export const NewsletterCampaigns: CollectionConfig = {
   },
   access: {
     read: ({ req }) => Boolean(req.user),
-    create: ({ req }) => Boolean(req.user),
+    create: () => false,
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => Boolean(req.user),
   },

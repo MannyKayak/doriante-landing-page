@@ -46,14 +46,14 @@ export const NewsletterSubscribers: CollectionConfig = {
 
         const escapeCSV = (value: string) => `"${value.replace(/"/g, '""')}"`
 
-        const header = 'Email Address;Status'
-        const rows = allSubscribers.map(({ email, subscribed }) => {
-          const status = subscribed === false ? 'unsubscribed' : 'subscribed'
-          return `${escapeCSV(email)};${escapeCSV(status)}`
-        })
+        const rows = allSubscribers
+          .filter((sub) => sub.subscribed !== false)
+          .map(({ email }) => {
+            return `${escapeCSV(email)}`
+          })
 
-        const csv = [header, ...rows].join('\n')
-        const filename = `newsletter-subscribers-mailchimp-${new Date().toISOString().slice(0, 10)}.csv`
+        const csv = [...rows].join('\n')
+        const filename = `newsletter-subscribers-${new Date().toISOString().slice(0, 10)}.csv`
 
         return new Response(csv, {
           status: 200,

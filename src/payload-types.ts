@@ -174,6 +174,7 @@ export interface NewsletterSubscriber {
   id: string;
   email: string;
   consent: boolean;
+  subscribed: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -302,6 +303,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface NewsletterSubscribersSelect<T extends boolean = true> {
   email?: T;
   consent?: T;
+  subscribed?: T;
   updatedAt?: T;
   createdAt?: T;
 }

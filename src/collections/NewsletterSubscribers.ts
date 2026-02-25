@@ -4,7 +4,7 @@ export const NewsletterSubscribers: CollectionConfig = {
   slug: 'newsletter-subscribers',
   admin: {
     useAsTitle: 'email',
-    defaultColumns: ['email', 'consent', 'createdAt'],
+    defaultColumns: ['email', 'subscribed', 'consent', 'createdAt'],
   },
   access: {
     create: () => true,
@@ -22,6 +22,12 @@ export const NewsletterSubscribers: CollectionConfig = {
     },
     {
       name: 'consent',
+      type: 'checkbox',
+      required: true,
+      defaultValue: true,
+    },
+    {
+      name: 'subscribed',
       type: 'checkbox',
       required: true,
       defaultValue: true,

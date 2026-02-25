@@ -70,6 +70,7 @@ export async function POST(req: Request) {
       data: {
         email,
         consent: true,
+        subscribed: true,
       },
     })
 
@@ -79,6 +80,34 @@ export async function POST(req: Request) {
     })
   } catch (error) {
     if (isAlreadySubscribedError(error)) {
+      const payload = await payloadPromise
+      const existing = await payload.find({
+        collection: 'newsletter-subscribers',
+        where: {
+          email: {
+            equals: email,
+          },
+        },
+        limit: 1,
+      })
+
+      const existingDoc = existing.docs[0]
+      if (existingDoc && existingDoc.subscribed !== true) {
+        await payload.update({
+          collection: 'newsletter-subscribers',
+          id: existingDoc.id,
+          data: {
+            subscribed: true,
+            consent: true,
+          },
+        })
+
+        return NextResponse.json({
+          ok: true,
+          message: 'Iscrizione completata.',
+        })
+      }
+
       return NextResponse.json({
         ok: true,
         code: 'ALREADY_SUBSCRIBED',

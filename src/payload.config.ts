@@ -8,6 +8,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { NewsletterSubscribers } from './collections/NewsletterSubscribers'
 import { Landing } from './globals/Landing'
 import { Footer } from './globals/Footer'
 
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, NewsletterSubscribers],
   globals: [Landing, Footer],
   editor: lexicalEditor(),
   localization: {

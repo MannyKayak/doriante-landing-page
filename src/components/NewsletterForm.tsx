@@ -8,17 +8,23 @@ type Status = 'idle' | 'loading' | 'success' | 'error'
 type Props = {
   className?: string
   privacyHref?: string
+  endpoint?: string
 }
 
 type SubscribeApiResponse = {
   ok?: boolean
   code?: string
   message?: string
+  errors?: Array<{ message?: string }>
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export default function NewsletterForm({ className = '', privacyHref = '/privacy-policy' }: Props) {
+export default function NewsletterForm({
+  className = '',
+  privacyHref = '/privacy-policy',
+  endpoint = '/api/newsletter/subscribe',
+}: Props) {
   const uid = useId()
   const [email, setEmail] = useState('')
   const [consent, setConsent] = useState(false)
@@ -40,18 +46,19 @@ export default function NewsletterForm({ className = '', privacyHref = '/privacy
 
     if (!consent) {
       setStatus('error')
-      setMessage('Devi accettare per iscriverti')
+      setMessage('Devi accettare la privacy policy per iscriverti')
       return
     }
 
     setStatus('loading')
 
     try {
-      const response = await fetch('/api/newsletter/subscribe', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        cache: 'no-store',
         body: JSON.stringify({
           email: normalizedEmail,
           consent: true,
@@ -62,18 +69,20 @@ export default function NewsletterForm({ className = '', privacyHref = '/privacy
 
       if (!response.ok) {
         setStatus('error')
-        setMessage(payload?.message || "Impossibile completare l'iscrizione. Riprova piu tardi.")
+        setMessage(
+          payload?.message ||
+            payload?.errors?.[0]?.message ||
+            "Impossibile completare l'iscrizione. Riprova piu tardi.",
+        )
         return
       }
 
       setStatus('success')
 
       if (payload?.code === 'ALREADY_SUBSCRIBED') {
-        setMessage('Sei gia iscritto alla newsletter.')
-      } else if (payload?.code === 'ALREADY_PENDING') {
-        setMessage('Hai gia una conferma in attesa. Controlla la tua email.')
+        setMessage('Sei gia iscritto.')
       } else {
-        setMessage("Controlla la tua email per confermare l'iscrizione.")
+        setMessage('Iscrizione completata.')
       }
 
       setEmail('')
@@ -88,25 +97,38 @@ export default function NewsletterForm({ className = '', privacyHref = '/privacy
     <section className={['w-full py-16 sm:py-20', className].join(' ')}>
       <div className="mx-auto w-full max-w-3xl px-6 text-center">
         <form onSubmit={onSubmit} className="mx-auto mt-8 w-full max-w-xl space-y-4 text-left">
-          <label className="sr-only" htmlFor={`${uid}-email`}>
-            Email
-          </label>
+          <div className="flex gap-4">
+            <label className="sr-only" htmlFor={`${uid}-email`}>
+              Email
+            </label>
 
-          <input
-            id={`${uid}-email`}
-            name="email"
-            type="email"
-            inputMode="email"
-            autoComplete="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            className={[
-              'h-11 w-full rounded-md bg-white px-4 text-sm text-black outline-none',
-              'placeholder:text-black/50 ring-1 ring-black/10 focus:ring-2 focus:ring-black/40',
-            ].join(' ')}
-            disabled={disabled}
-          />
+            <input
+              id={`${uid}-email`}
+              name="email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              placeholder="Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className={[
+                'h-11 w-full rounded-md  bg-white px-4 text-sm text-black outline-none',
+                'placeholder:text-black/50 ring-1 ring-black/10 focus:ring-2 focus:ring-black/40',
+              ].join(' ')}
+              disabled={disabled}
+            />
+
+            <button
+              type="submit"
+              disabled={disabled}
+              className={[
+                'h-11 w-full rounded-md bg-dark text-sm font-medium text-white max-w-53',
+                'transition-opacity hover:opacity-90 disabled:opacity-60',
+              ].join(' ')}
+            >
+              {status === 'loading' ? 'Invio...' : 'Iscriviti'}
+            </button>
+          </div>
 
           <label className="flex items-start gap-3 text-sm text-black/80">
             <input
@@ -124,22 +146,14 @@ export default function NewsletterForm({ className = '', privacyHref = '/privacy
               .
             </span>
           </label>
-
-          <button
-            type="submit"
-            disabled={disabled}
-            className={[
-              'h-11 w-full rounded-md bg-[#0B1C2A] text-sm font-medium text-white',
-              'transition-opacity hover:opacity-90 disabled:opacity-60',
-            ].join(' ')}
-          >
-            {status === 'loading' ? 'Invio...' : 'Iscriviti'}
-          </button>
         </form>
 
         {message ? (
           <p
-            className={['mt-3 text-sm', status === 'success' ? 'text-black/80' : 'text-red-900/80'].join(' ')}
+            className={[
+              'mt-3 text-sm',
+              status === 'success' ? 'text-black/80' : 'text-red-900/80',
+            ].join(' ')}
             aria-live="polite"
           >
             {message}
@@ -149,4 +163,3 @@ export default function NewsletterForm({ className = '', privacyHref = '/privacy
     </section>
   )
 }
-

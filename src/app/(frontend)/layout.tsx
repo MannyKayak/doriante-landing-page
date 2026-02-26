@@ -1,16 +1,17 @@
 import React from 'react'
+import Script from 'next/script'
 import './styles.css'
 import './globals.css'
 import { Footer } from '@/components/Footer'
 import { ogg } from '@/font/font'
 import payloadConfig from '@/payload.config'
 import { getPayload } from 'payload'
-import { Script } from 'vm'
 
 export const metadata = {
   description:
     'Doriante è un progetto editoriale indipendente che nasce con l’obiettivo di esplorare e raccontare le connessioni tra cibo, cultura e società. Attraverso articoli, interviste e approfondimenti, Doriante si propone di offrire una prospettiva unica e stimolante sul mondo del cibo, andando oltre la semplice gastronomia per indagare le sue implicazioni culturali, sociali ed economiche.',
   title: 'DORIANTE',
+  icon: '/assets/images/favicon.png',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
@@ -24,8 +25,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${ogg.variable}  antialiased`}>
       <head>
-        <script
-          type="text/javascript"
+        <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+        <Script
+          id="iubenda-loader"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function (w,d) {

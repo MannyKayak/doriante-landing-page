@@ -14,7 +14,6 @@ import { AmenitySection } from '@/components/AmenitySection'
 import { AboutUs } from '@/components/AboutUs'
 import FormSection from '@/components/FormSection'
 import DorianteText from '@/components/ui/DorianteText'
-import { L } from 'vitest/dist/chunks/reporters.d.DL9pg5DB.js'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -25,17 +24,8 @@ export default async function HomePage() {
     slug: 'landing',
     user,
   })
-  // landing data contiene tutti i dati del global "landing", devo fare alcune modifiche:
-  // - nel global credo ci sia dentro anche il footer, che forse metterei in una sezione separata
-  // - bisogna capire il multilingua a i form
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
-  const aboutUsData = {
-    title: 'Chi Siamo',
-    description:
-      'Nato come un luogo dell’immaginazione - una città invisibile mai scritta - Doriante sta prendendo forma ad Ameno, borgo silenzioso affacciato sulla riva più quieta del Lago d’Orta. Più che una dimora, è un pensiero sospeso tra bellezza e natura, dove il tempo smette di correre. Il suo nome non appartiene a nessuna lingua, eppure parla a tutti: evoca un’ospitalità rara e intima, aperta al mondo. Doriante vive nei dettagli  nella vena del legno, nel lino grezzo, nel verde che entra dalle finestre offrendo una pausa delicata dove l’arte incontra il respiro profondo della quiete.',
-    imageUrl: '/assets/images/profile.png',
-  }
+  // const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
   return (
     <div className="bg-dark">

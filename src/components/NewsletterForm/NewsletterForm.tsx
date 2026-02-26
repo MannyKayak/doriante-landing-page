@@ -7,6 +7,7 @@ import { useId, useMemo, useState } from 'react'
 import UnsubscribedModal from './components/UnsubscribedModal'
 import DorianteText from '../ui/DorianteText'
 import PrivacyPolicyLink from '../PrivacyPolicy'
+import { styleText } from 'util'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -213,6 +214,7 @@ export default function NewsletterForm({
               disabled={disabled}
               className="mt-0.5 h-4 w-4 rounded border-dark accent-dark focus:ring-dark"
             />
+
             <DorianteText className="text-dark font-arial font-bold text-xs">
               <span>
                 Acconsento a ricevere comunicazioni marketing e confermo di aver letto la{' '}
@@ -224,7 +226,17 @@ export default function NewsletterForm({
             </DorianteText>
           </label>
         </form>
-
+        {message ? (
+          <DorianteText
+            className={[
+              'mt-3 text-sm font-bold arial doriante-text',
+              status === 'success' ? 'text-dark' : 'text-red-900/80',
+            ].join(' ')}
+            aria-live="polite"
+          >
+            {message}
+          </DorianteText>
+        ) : null}
         <div className="mt-10">
           <DorianteText color="dark" align="center">
             {hasUnsubscribeWord ? (
@@ -248,18 +260,6 @@ export default function NewsletterForm({
             )}
           </DorianteText>
         </div>
-
-        {message ? (
-          <p
-            className={[
-              'mt-3 text-sm',
-              status === 'success' ? 'text-dark' : 'text-red-900/80',
-            ].join(' ')}
-            aria-live="polite"
-          >
-            {message}
-          </p>
-        ) : null}
 
         {isUnsubscribeModalOpen ? (
           <UnsubscribedModal

@@ -7,6 +7,7 @@ import LinkedinIcon from '@/assets/LinkedinIcon'
 import InstagramIcon from '@/assets/InstagramIcon'
 import { Footer as FooterType } from '@/payload-types'
 import PrivacyPolicyLink from '../PrivacyPolicy'
+import Link from 'next/link'
 
 type FooterProps = {
   className?: string
@@ -61,18 +62,18 @@ export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
               {footer.contacts?.email && (
                 <li>
                   <DorianteText className="doriante-text text-dark arial pt-2 ">
-                    <a
-                      href={`mailto:${footer.contacts.email}`}
-                      className="hover:text-black transition"
-                    >
+                    <a href={`mailto:${footer.contacts.email}`} className=" transition">
                       {footer.contacts.email}
                     </a>
                   </DorianteText>
                 </li>
               )}
-
               <li>
-                <PrivacyPolicyLink />
+                <DorianteText className="text-dark arial pt-2 hover:text-black transition font-bold">
+                  <Link href={'https://www.iubenda.com/privacy-policy/77331444'} target="_blank">
+                    Privacy Policy
+                  </Link>
+                </DorianteText>
               </li>
             </ul>
           </div>

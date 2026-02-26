@@ -1,3 +1,5 @@
+import DorianteText from '@/components/ui/DorianteText'
+import DorianteTitle from '@/components/ui/DorianteTitle'
 import type { FormEvent } from 'react'
 
 type Props = {
@@ -20,12 +22,23 @@ export default function UnsubscribedModal({
   onSubmit,
 }: Props) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={onClose}>
-      <div className="w-full max-w-md rounded-xl bg-white p-6 text-left" onClick={(event) => event.stopPropagation()}>
-        <h3 className="text-lg font-medium text-black">Disiscrizione newsletter</h3>
-        <p className="mt-2 text-sm text-black/80">
-          Inserisci l&apos;email con cui ti sei iscritto per confermare la disiscrizione.
-        </p>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 "
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-md rounded-xl p-6 text-left bg-light"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <DorianteTitle tag="h4" className="text-lg font-medium text-dark">
+          Disiscrizione newsletter
+        </DorianteTitle>
+        <div className="mt-4">
+          <DorianteText color="dark" size="lg" weight="normal">
+            Inserisci l&apos;<strong>email</strong> con cui ti sei iscritto per confermare la
+            disiscrizione.
+          </DorianteText>
+        </div>
 
         <form className="mt-4 space-y-3" onSubmit={onSubmit}>
           <label className="sr-only" htmlFor={`${uid}-unsubscribe-email`}>
@@ -41,8 +54,8 @@ export default function UnsubscribedModal({
             onChange={(event) => onEmailChange(event.target.value)}
             placeholder="Email"
             className={[
-              'h-11 w-full rounded-md bg-white px-4 text-sm text-black outline-none',
-              'placeholder:text-black/50 ring-1 ring-black/10 focus:ring-2 focus:ring-black/40',
+              'h-11 w-full rounded-md bg-light px-4 text-sm text-dark outline-none',
+              'placeholder:text-dark/50 ring-1 ring-black/10 focus:ring-2 focus:ring-dark/40',
             ].join(' ')}
             disabled={isUnsubscribing}
           />

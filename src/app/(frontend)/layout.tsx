@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer'
 import { ogg } from '@/font/font'
 import payloadConfig from '@/payload.config'
 import { getPayload } from 'payload'
+import { Script } from 'vm'
 
 export const metadata = {
   description:
@@ -22,6 +23,30 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   })
   return (
     <html lang="en" className={`${ogg.variable}  antialiased`}>
+      <head>
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function (w,d) {
+                var loader = function () {
+                  var s = d.createElement("script"),
+                      tag = d.getElementsByTagName("script")[0];
+                  s.src="https://cdn.iubenda.com/iubenda.js";
+                  tag.parentNode.insertBefore(s,tag);
+                };
+                if(w.addEventListener){
+                  w.addEventListener("load", loader, false);
+                } else if(w.attachEvent){
+                  w.attachEvent("onload", loader);
+                } else {
+                  w.onload = loader;
+                }
+              })(window, document);
+            `,
+          }}
+        />
+      </head>
       <body>
         <main>{children}</main>
         <Footer data={footer} />

@@ -5,6 +5,8 @@ import type { FormEvent } from 'react'
 import { useId, useMemo, useState } from 'react'
 
 import UnsubscribedModal from './components/UnsubscribedModal'
+import DorianteText from '../ui/DorianteText'
+import PrivacyPolicyLink from '../PrivacyPolicy'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 
@@ -33,7 +35,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function NewsletterForm({
   className = '',
-  privacyHref = '/privacy-policy',
+  privacyHref = '',
   endpoint = '/api/newsletter/subscribe',
   footerText = 'Ci teniamo alla tua privacy disinscriviti quando vuoi',
 }: Props) {
@@ -49,7 +51,9 @@ export default function NewsletterForm({
 
   const disabled = useMemo(() => status === 'loading' || isUnsubscribing, [status, isUnsubscribing])
   const hasUnsubscribeWord = footerText.toLowerCase().includes('disinscriviti')
-  const unsubscribeTextParts = hasUnsubscribeWord ? footerText.split(/disinscriviti/i) : [footerText]
+  const unsubscribeTextParts = hasUnsubscribeWord
+    ? footerText.split(/disinscriviti/i)
+    : [footerText]
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -96,7 +100,9 @@ export default function NewsletterForm({
       }
 
       setStatus('success')
-      setMessage(payload?.code === 'ALREADY_SUBSCRIBED' ? 'Sei gia iscritto.' : 'Iscrizione completata.')
+      setMessage(
+        payload?.code === 'ALREADY_SUBSCRIBED' ? 'Sei gia iscritto.' : 'Iscrizione completata.',
+      )
       setEmail('')
       setConsent(false)
     } catch {
@@ -199,51 +205,55 @@ export default function NewsletterForm({
             </button>
           </div>
 
-          <label className="flex items-start gap-3 text-sm text-black/80">
+          <label className="flex items-center gap-3 text-sm text-dark">
             <input
               type="checkbox"
               checked={consent}
               onChange={(event) => setConsent(event.target.checked)}
               disabled={disabled}
-              className="mt-0.5 h-4 w-4 rounded border-black/30 text-black focus:ring-black"
+              className="mt-0.5 h-4 w-4 rounded border-dark accent-dark focus:ring-dark"
             />
-            <span>
-              Acconsento a ricevere comunicazioni marketing e confermo di aver letto la{' '}
-              <Link href={privacyHref} className="underline underline-offset-2">
-                Privacy Policy
-              </Link>
-              .
-            </span>
+            <DorianteText className="text-dark font-arial font-bold text-xs">
+              <span>
+                Acconsento a ricevere comunicazioni marketing e confermo di aver letto la{' '}
+                <Link href={privacyHref} target="_blank" className="underline underline-offset-2">
+                  Privacy Policy
+                </Link>
+                .
+              </span>
+            </DorianteText>
           </label>
         </form>
 
-        <p className="mt-3 text-sm text-black/80">
-          {hasUnsubscribeWord ? (
-            <>
-              {unsubscribeTextParts[0]}
-              <button
-                type="button"
-                className="underline underline-offset-2"
-                onClick={() => {
-                  setUnsubscribeMessage(null)
-                  setUnsubscribeEmail(email.trim().toLowerCase())
-                  setIsUnsubscribeModalOpen(true)
-                }}
-              >
-                disinscriviti
-              </button>
-              {unsubscribeTextParts.slice(1).join('disinscriviti')}
-            </>
-          ) : (
-            footerText
-          )}
-        </p>
+        <div className="mt-10">
+          <DorianteText color="dark" align="center">
+            {hasUnsubscribeWord ? (
+              <>
+                {unsubscribeTextParts[0]}
+                <button
+                  type="button"
+                  className="underline underline-offset-2"
+                  onClick={() => {
+                    setUnsubscribeMessage(null)
+                    setUnsubscribeEmail(email.trim().toLowerCase())
+                    setIsUnsubscribeModalOpen(true)
+                  }}
+                >
+                  disinscriviti
+                </button>
+                {unsubscribeTextParts.slice(1).join('disinscriviti')}
+              </>
+            ) : (
+              footerText
+            )}
+          </DorianteText>
+        </div>
 
         {message ? (
           <p
             className={[
               'mt-3 text-sm',
-              status === 'success' ? 'text-black/80' : 'text-red-900/80',
+              status === 'success' ? 'text-dark' : 'text-red-900/80',
             ].join(' ')}
             aria-live="polite"
           >

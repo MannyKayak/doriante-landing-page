@@ -6,6 +6,7 @@ import FbIcon from '@/assets/FbIcon'
 import LinkedinIcon from '@/assets/LinkedinIcon'
 import InstagramIcon from '@/assets/InstagramIcon'
 import { Footer as FooterType } from '@/payload-types'
+import PrivacyPolicyLink from '../PrivacyPolicy'
 
 type FooterProps = {
   className?: string
@@ -39,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
 
           {/* CONTACT */}
           <div>
-            <DorianteText className="doriante-text text-dark arial sm:pt-0 pt-4 ">
+            <DorianteText className="doriante-text  text-dark arial sm:pt-0 pt-4 ">
               {footer.contacts?.text}
             </DorianteText>
 
@@ -69,6 +70,10 @@ export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
                   </DorianteText>
                 </li>
               )}
+
+              <li>
+                <PrivacyPolicyLink />
+              </li>
             </ul>
           </div>
 

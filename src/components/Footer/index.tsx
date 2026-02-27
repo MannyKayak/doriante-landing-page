@@ -6,7 +6,6 @@ import FbIcon from '@/assets/FbIcon'
 import LinkedinIcon from '@/assets/LinkedinIcon'
 import InstagramIcon from '@/assets/InstagramIcon'
 import { Footer as FooterType } from '@/payload-types'
-import PrivacyPolicyLink from '../PrivacyPolicy'
 import Link from 'next/link'
 
 type FooterProps = {

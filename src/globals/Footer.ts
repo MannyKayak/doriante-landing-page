@@ -39,7 +39,7 @@ export const Footer: GlobalConfig = {
               name: 'phone',
               type: 'text',
               label: 'Phone',
-              required: true,
+              required: false,
             },
             {
               name: 'email',

@@ -35,7 +35,7 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
           {subtitle}
         </DorianteTitle>
         <div className="mt-2">
-          <DorianteText className="text-white text-left doriante-text font-semibold mt-8">
+          <DorianteText className="text-white text-xl text-left doriante-text font-semibold mt-8">
             {description}
           </DorianteText>
         </div>

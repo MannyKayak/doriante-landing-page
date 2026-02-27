@@ -4,7 +4,6 @@ import DorianteTitle from '../ui/DorianteTitle'
 import DorianteText from '../ui/DorianteText'
 import DorianteImage from '../ui/DorianteImage'
 import { ProjectSectionProps } from '@/payload-types'
-import { get } from 'http'
 import { getUrlFromMedia } from '@/utils/functions/getUrlFromMedia'
 
 export const AboutUs: FC<ProjectSectionProps> = ({
@@ -23,14 +22,14 @@ export const AboutUs: FC<ProjectSectionProps> = ({
             {title}
           </DorianteTitle>
 
-          <DorianteText color="white" align="left" size="lg">
+          <DorianteText className="text-white text-xl text-left doriante-text font-semibold mt-8">
             {subtitle}
           </DorianteText>
 
           <DorianteText color="white" align="left" size="base" style="serif">
             -{tagline}-
           </DorianteText>
-          <DorianteText color="white" align="left" size="base">
+          <DorianteText className="text-white text-xl text-left doriante-text font-semibold mt-8">
             {description}
           </DorianteText>
         </div>

@@ -497,7 +497,7 @@ export interface Footer {
     address: string;
     contacts: {
       text: string;
-      phone: string;
+      phone?: string | null;
       email: string;
     };
     socials: {

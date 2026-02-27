@@ -6,8 +6,6 @@ import { useId, useMemo, useState } from 'react'
 
 import UnsubscribedModal from './components/UnsubscribedModal'
 import DorianteText from '../ui/DorianteText'
-import PrivacyPolicyLink from '../PrivacyPolicy'
-import { styleText } from 'util'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
 

@@ -12,7 +12,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 const GalleryContent = ({
-  sectionTitle,
+  sectionTitle: _sectionTitle,
   title,
   subtitle,
   description,

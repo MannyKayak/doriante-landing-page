@@ -11,8 +11,7 @@ export const ActivityCard: React.FC<{
   cardtitle: string
   cardDescription: string
   image: string | Media
-  id?: string | null
-}> = ({ cardtitle, cardDescription, image, id }) => {
+}> = ({ cardtitle, cardDescription, image }) => {
   return (
     <div className="w-full overflow-hidden sm:h-full h-[500px] rounded-3xl bg-gray mb-10">
       <div className="relative w-full sm:h-[380px] h-[280px] aspect-[352px/400px] overflow-hidden">

@@ -355,6 +355,12 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Landing {
   id: string;
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    ogImage?: (string | null) | Media;
+    noIndex?: boolean | null;
+  };
   hero: HeroSectionProps;
   pillars?: PillarsSectionProps;
   sections: SectionsProps;
@@ -512,6 +518,14 @@ export interface Footer {
  * via the `definition` "landing_select".
  */
 export interface LandingSelect<T extends boolean = true> {
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        noIndex?: T;
+      };
   hero?: T | HeroSectionPropsSelect<T>;
   pillars?: T | PillarsSectionPropsSelect<T>;
   sections?: T | SectionsPropsSelect<T>;

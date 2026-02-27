@@ -27,6 +27,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <head>
         <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
         <Script
+          src="https://embeds.iubenda.com/widgets/1a156bc6-a0e6-45de-a3aa-9abd299b3045.js"
+          strategy="lazyOnload"
+        />
+        <Script
           id="iubenda-loader"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{

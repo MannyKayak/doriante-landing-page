@@ -19,29 +19,29 @@ export const Landing: GlobalConfig = {
     {
       type: 'tabs',
       tabs: [
-        // {
-        //   label: 'SEO',
-        //   fields: [
-        //     {
-        //       name: 'seo',
-        //       type: 'group',
-        //       fields: [
-        //         { name: 'metaTitle', type: 'text' },
-        //         {
-        //           name: 'metaDescription',
-        //           type: 'textarea',
-        //           localized: true,
-        //         },
-        //         {
-        //           name: 'ogImage',
-        //           type: 'upload',
-        //           relationTo: 'media',
-        //         },
-        //         { name: 'noIndex', type: 'checkbox', defaultValue: false },
-        //       ],
-        //     },
-        //   ],
-        // },
+        {
+          label: 'SEO',
+          fields: [
+            {
+              name: 'seo',
+              type: 'group',
+              fields: [
+                { name: 'metaTitle', type: 'text' },
+                {
+                  name: 'metaDescription',
+                  type: 'textarea',
+                  localized: true,
+                },
+                {
+                  name: 'ogImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
+                { name: 'noIndex', type: 'checkbox', defaultValue: false },
+              ],
+            },
+          ],
+        },
         {
           label: 'Hero',
           fields: [...heroFields],

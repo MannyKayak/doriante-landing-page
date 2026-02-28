@@ -14,5 +14,6 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     staticDir: process.env.NODE_ENV === 'production' ? '/tmp/media' : 'media',
+    mimeTypes: ['image/*'],
   },
 }

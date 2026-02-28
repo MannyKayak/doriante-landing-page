@@ -22,6 +22,7 @@ export default async function HomePage() {
   const landingData = await payload.findGlobal({
     slug: 'landing',
     user,
+    depth: 1,
   })
 
   // const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`

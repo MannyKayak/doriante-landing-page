@@ -12,11 +12,14 @@ export const HeroSection: React.FC<HeroSectionProps> = async ({
   backgroundImage,
 }) => {
   const backgroundImageUrl = getUrlFromMedia(backgroundImage)
+
   return (
     <DorianteSection className="relative min-h-screen">
       {/* Background */}
       <div className="z-0">
-        <Image src={backgroundImageUrl} alt="background" fill className="object-cover" />
+        {backgroundImageUrl ? (
+          <Image src={backgroundImageUrl} alt="background" fill className="object-cover" />
+        ) : null}
         <div className="absolute inset-0 bg-white/35" />
         <div className="absolute inset-0 bg-linear-to-b from-white/40 via-transparent to-white/15" />
       </div>

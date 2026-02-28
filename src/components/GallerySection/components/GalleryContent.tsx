@@ -19,6 +19,8 @@ const GalleryContent = ({
   images,
   reverse = false,
 }: GalleryContentProps & { reverse?: boolean }) => {
+  console.log('images are:', images)
+
   return (
     <div
       className={`flex flex-col justify-start ${reverse ? 'sm:flex-row-reverse justify-end' : 'sm:flex-row'} w-full`}

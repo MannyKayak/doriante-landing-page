@@ -6,9 +6,16 @@ type DorianteImageProps = {
   alt: string
   fill?: boolean
   use?: 'mini-card' | 'base'
+  customClass?: string
 }
 
-const DorianteImage: FC<DorianteImageProps> = ({ src, alt, fill = false, use = 'base' }) => {
+const DorianteImage: FC<DorianteImageProps> = ({
+  src,
+  alt,
+  fill = false,
+  use = 'base',
+  customClass = '',
+}) => {
   return (
     <>
       <Image
@@ -18,7 +25,9 @@ const DorianteImage: FC<DorianteImageProps> = ({ src, alt, fill = false, use = '
         height={!fill ? 920 : undefined}
         fill={fill}
         className={
-          use === 'mini-card' ? 'object-cover object-center' : 'object-cover object-center'
+          use === 'mini-card'
+            ? `object-cover object-center ${customClass}`
+            : `object-cover object-center ${customClass}`
         }
       />
     </>

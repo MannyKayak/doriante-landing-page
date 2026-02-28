@@ -9,7 +9,6 @@ import 'swiper/css/pagination'
 import { PillarsSectionProps } from '@/payload-types'
 
 export const PillarsSection: FC<PillarsSectionProps> = ({ items }): JSX.Element => {
-  console.log(items)
   return (
     <DorianteSection className="py-10">
       {/* MOBILE: slider (1 card per view) */}

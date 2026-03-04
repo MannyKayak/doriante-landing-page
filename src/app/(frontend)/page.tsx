@@ -30,7 +30,7 @@ export default async function HomePage() {
   return (
     <div className="bg-dark">
       <div className="text-center py-4 fixed top-0 bg-dark z-20 w-full opacity-60 ">
-        <DorianteText className="text-white font-bold text-3xl text-serif doriante-text">
+        <DorianteText className="text-white font-bold text-lg sm:text-3xl text-serif doriante-text">
           La dimora aprirà nella primavera 2028
         </DorianteText>{' '}
       </div>

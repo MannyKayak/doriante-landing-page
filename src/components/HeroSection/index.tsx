@@ -29,7 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = async ({
         <DorianteTitle color="dark" tag="h1" className="text-dark">
           {heading || 'Welcome to Doriante'}
         </DorianteTitle>
-        <DorianteTitle tag="h1" className="arial text-dark">
+        <DorianteTitle tag="h1" className="arial text-dark whitespace-pre-line">
           {subHeading}
         </DorianteTitle>
       </div>

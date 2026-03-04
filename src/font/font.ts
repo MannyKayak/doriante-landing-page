@@ -13,7 +13,7 @@ export const ogg = localFont({
     //   style: 'normal',
     // },
     {
-      path: './OggFontFamily/Ogg-Regular.otf',
+      path: './Ogg/Webfonts/Ogg-Regular.woff',
       weight: '400',
       style: 'normal',
     },

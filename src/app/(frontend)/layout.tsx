@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer'
 import { ogg } from '@/font/font'
 import payloadConfig from '@/payload.config'
 import { getPayload } from 'payload'
+import { getCurrentLocale } from '@/utils/i18n/locale'
 
 export const metadata = {
   description:
@@ -16,14 +17,15 @@ export const metadata = {
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
+  const locale = await getCurrentLocale()
   const payload = await getPayload({ config: payloadConfig })
   const footer = await payload.findGlobal({
     slug: 'footer',
-    locale: 'it',
+    locale,
     fallbackLocale: 'it',
   })
   return (
-    <html lang="en" className={`${ogg.variable}  antialiased`}>
+    <html lang={locale} className={`${ogg.variable}  antialiased`}>
       <head>
         <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
         <Script

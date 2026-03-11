@@ -4,6 +4,7 @@ import React from 'react'
 
 import config from '@/payload.config'
 import './styles.css'
+import LanguageToggle from '@/components/LanguageToggle'
 
 import { PillarsSection } from '@/components/PillarsSection'
 import { HeroSection } from '@/components/HeroSection'
@@ -13,9 +14,11 @@ import { AmenitySection } from '@/components/AmenitySection'
 import { AboutUs } from '@/components/AboutUs'
 import FormSection from '@/components/FormSection'
 import DorianteText from '@/components/ui/DorianteText'
+import { getCurrentLocale } from '@/utils/i18n/locale'
 
 export default async function HomePage() {
   const headers = await getHeaders()
+  const locale = await getCurrentLocale()
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
@@ -23,12 +26,16 @@ export default async function HomePage() {
     slug: 'landing',
     user,
     depth: 1,
+    locale,
+    fallbackLocale: 'it',
   })
 
   // const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
   return (
-    <div className="bg-dark">
+    <div className="bg-dark relative">
+      <LanguageToggle currentLanguage={locale} />
+
       <div className="text-center py-4 fixed top-0 bg-dark z-20 w-full opacity-60 ">
         <DorianteText className="text-white font-bold text-lg sm:text-3xl text-serif doriante-text">
           La dimora aprirà nella primavera 2028

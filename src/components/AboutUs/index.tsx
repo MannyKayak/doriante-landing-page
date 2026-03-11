@@ -16,8 +16,8 @@ export const AboutUs: FC<ProjectSectionProps> = ({
   const imageUrl = getUrlFromMedia(image)
   return (
     <DorianteSection className="w-full py-20">
-      <div className="flex flex-col-reverse md:flex-row gap-16">
-        <div className="flex flex-col justify-start gap-4 max-w-1/2">
+      <div className="flex flex-col-reverse justify-center w-full  lg:flex-row gap-16">
+        <div className="flex flex-col justify-start gap-4 max-w-full lg:max-w-1/2">
           <DorianteTitle tag="h1" className="text-light">
             {title}
           </DorianteTitle>
@@ -34,7 +34,7 @@ export const AboutUs: FC<ProjectSectionProps> = ({
           </DorianteText>
         </div>
 
-        <div className="flex items-center justify-center max-w-1/2">
+        <div className="flex items-center  justify-center max-w-full  lg:max-w-1/2">
           <DorianteImage
             use="base"
             src={imageUrl}

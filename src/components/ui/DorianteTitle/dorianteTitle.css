@@ -1,7 +1,7 @@
 .doriante-title {
-  font-family: var(--font-ogg);
+  font-family: var(--font-ogg), Georgia, 'Times New Roman', serif;
   font-weight: 400;
-  font-style: Regular;
+  font-style: normal;
   font-size: 40px;
   leading-trim: NONE;
   line-height: 100%;
@@ -12,6 +12,7 @@
 .doriante-title.arial {
   font-family: Arial, sans-serif;
   font-weight: 400;
+  font-style: normal;
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0%;

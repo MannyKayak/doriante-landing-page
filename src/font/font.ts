@@ -2,16 +2,11 @@ import localFont from 'next/font/local'
 
 export const ogg = localFont({
   src: [
-    // {
-    //   path: './OggFontFamily/Ogg-Thin.otf',
-    //   weight: '100',
-    //   style: 'normal',
-    // },
-    // {
-    //   path: './OggFontFamily/Ogg-Light.otf',
-    //   weight: '300',
-    //   style: 'normal',
-    // },
+    {
+      path: './Ogg/Webfonts/Ogg-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
     {
       path: './Ogg/Webfonts/Ogg-Regular.woff',
       weight: '400',
@@ -29,6 +24,7 @@ export const ogg = localFont({
     // },
   ],
   variable: '--font-ogg',
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
   display: 'swap',
 })
 

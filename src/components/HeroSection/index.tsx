@@ -5,7 +5,6 @@ import { DorinateLogo } from '../ui/DorianteLogo'
 import { HeroSectionProps } from '@/payload-types'
 import { getUrlFromMedia } from '@/utils/functions/getUrlFromMedia'
 import DorianteTitle from '../ui/DorianteTitle'
-import LanguageToggle from '../LanguageToggle'
 
 export const HeroSection: React.FC<HeroSectionProps> = async ({
   heading,

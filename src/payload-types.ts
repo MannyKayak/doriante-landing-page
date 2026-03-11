@@ -361,6 +361,10 @@ export interface Landing {
     ogImage?: (string | null) | Media;
     noIndex?: boolean | null;
   };
+  topBanner?: {
+    enabled?: boolean | null;
+    text?: string | null;
+  };
   hero: HeroSectionProps;
   pillars?: PillarsSectionProps;
   sections: SectionsProps;
@@ -525,6 +529,12 @@ export interface LandingSelect<T extends boolean = true> {
         metaDescription?: T;
         ogImage?: T;
         noIndex?: T;
+      };
+  topBanner?:
+    | T
+    | {
+        enabled?: T;
+        text?: T;
       };
   hero?: T | HeroSectionPropsSelect<T>;
   pillars?: T | PillarsSectionPropsSelect<T>;

@@ -43,6 +43,30 @@ export const Landing: GlobalConfig = {
           ],
         },
         {
+          label: 'Banner',
+          fields: [
+            {
+              name: 'topBanner',
+              type: 'group',
+              label: 'Top Banner',
+              fields: [
+                {
+                  name: 'enabled',
+                  type: 'checkbox',
+                  label: 'Mostra banner',
+                  defaultValue: true,
+                },
+                {
+                  name: 'text',
+                  type: 'textarea',
+                  label: 'Testo banner',
+                  localized: true,
+                },
+              ],
+            },
+          ],
+        },
+        {
           label: 'Hero',
           fields: [...heroFields],
         },

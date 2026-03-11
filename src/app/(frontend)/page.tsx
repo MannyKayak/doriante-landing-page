@@ -29,6 +29,9 @@ export default async function HomePage() {
     locale,
     fallbackLocale: 'it',
   })
+  const topBanner = (landingData as { topBanner?: { enabled?: boolean; text?: string | null } })
+    .topBanner
+  const showTopBanner = topBanner?.enabled === true && Boolean(topBanner.text?.trim())
 
   // const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
 
@@ -36,11 +39,13 @@ export default async function HomePage() {
     <div className="bg-dark relative">
       <LanguageToggle currentLanguage={locale} />
 
-      <div className="text-center py-4 fixed top-0 bg-dark z-20 w-full opacity-60 ">
-        <DorianteText className="text-white font-bold text-lg sm:text-3xl text-serif doriante-text">
-          La dimora aprirà nella primavera 2028
-        </DorianteText>{' '}
-      </div>
+      {showTopBanner ? (
+        <div className="text-center py-4 fixed top-0 bg-dark z-20 w-full opacity-60 ">
+          <DorianteText className="text-white font-bold text-lg sm:text-3xl text-serif doriante-text">
+            {topBanner?.text}
+          </DorianteText>{' '}
+        </div>
+      ) : null}
       <HeroSection {...landingData.hero} />
       <SubHeroSection text={landingData.hero.subHeroText} />
       <PillarsSection {...landingData.pillars} />

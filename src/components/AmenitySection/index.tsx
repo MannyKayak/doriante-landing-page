@@ -2,11 +2,6 @@
 
 import { FC } from 'react'
 import { ActivityCard } from './components/ActivityCard'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
 import DorianteSection from '../ui/DorianteSection'
 import DorianteTitle from '../ui/DorianteTitle'
 import DorianteText from '../ui/DorianteText'
@@ -41,32 +36,10 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
         </div>
       </header>
 
-      {/* MOBILE: slider (1 card per view) */}
-      <div className="w-full max-w-md md:hidden">
-        <Swiper
-          modules={[Pagination]}
-          slidesPerView={1}
-          spaceBetween={16}
-          pagination={{ clickable: true }}
-        >
-          {cards.map((item) => (
-            <SwiperSlide key={item.id}>
-              <ActivityCard {...item} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* DESKTOP/TABLET: flex wrap, max 4 per row */}
-      <div className="hidden w-full justify-center md:flex md:flex-wrap md:gap-6">
+      {/* Always single row: cards shrink proportionally */}
+      <div className="flex w-full flex-nowrap items-stretch gap-3 md:gap-6">
         {cards.map((item) => (
-          <div
-            key={item.id}
-            className="
-              flex w-full
-              max-w-70
-            "
-          >
+          <div key={item.id} className="flex min-w-0 flex-1">
             <ActivityCard {...item} />
           </div>
         ))}

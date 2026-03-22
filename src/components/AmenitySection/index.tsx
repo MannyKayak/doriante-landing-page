@@ -24,8 +24,8 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
     <DorianteSection className="w-full px-4 pt-4 pb-8 md:px-6">
       {/* Header */}
       <header className="mx-auto mb-10 flex w-full max-w-6xl flex-col items-start gap-3 text-left md:items-center md:text-center">
-        <div className="flex w-full gap-4">
-          <div className="bg-light w-18 h-[2px]" />
+        <div className="flex items-center w-full gap-4">
+          <div className="bg-light w-18 h-[2px] " />
           <DorianteTitle tag="h2" className=" text-light section-title">
             {title}
           </DorianteTitle>

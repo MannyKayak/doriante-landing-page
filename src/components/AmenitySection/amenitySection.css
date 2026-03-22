@@ -20,14 +20,21 @@
   background: var(--color-light) !important; /* dorato Doriante */
   width: 14px !important;
   height: 14px !important;
-  padding-bottom: 10px !important;
   opacity: 1 !important;
 }
 
-.doriante-swiper .swiper-pagination {
-  position: relative;
-  bottom: auto;
+.amenity-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.amenity-swiper .swiper-slide {
+  display: flex;
+  height: auto;
+}
+
+.amenity-swiper .swiper-pagination {
+  position: static !important;
   display: flex;
   justify-content: center;
-  transform: translateY(-30px);
+  margin-top: 16px;
 }

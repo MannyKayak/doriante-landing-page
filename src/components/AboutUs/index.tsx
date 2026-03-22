@@ -22,14 +22,20 @@ export const AboutUs: FC<ProjectSectionProps> = ({
             {title}
           </DorianteTitle>
 
-          <DorianteText className="text-white text-xl text-left doriante-text font-semibold mt-8">
+          <DorianteText className="text-white sm:text-xl text-md text-left doriante-text font-semibold mt-8">
             {subtitle}
           </DorianteText>
 
-          <DorianteText color="white" align="left" size="base" style="serif">
+          <DorianteText
+            color="white"
+            align="left"
+            size="base"
+            style="serif"
+            className="font-semibold italic"
+          >
             -{tagline}-
           </DorianteText>
-          <DorianteText className="text-white text-xl text-left doriante-text font-semibold mt-8">
+          <DorianteText className="text-white sm:text-xl text-md text-left doriante-text font-semibold mt-8">
             {description}
           </DorianteText>
         </div>

@@ -49,10 +49,8 @@ export default function NewsletterForm({
   const [isUnsubscribing, setIsUnsubscribing] = useState(false)
 
   const disabled = useMemo(() => status === 'loading' || isUnsubscribing, [status, isUnsubscribing])
-  const hasUnsubscribeWord = footerText.toLowerCase().includes('disinscriviti')
-  const unsubscribeTextParts = hasUnsubscribeWord
-    ? footerText.split(/disinscriviti/i)
-    : [footerText]
+  const hasUnsubscribeWord = footerText.toLowerCase().includes('disiscriviti')
+  const unsubscribeTextParts = hasUnsubscribeWord ? footerText.split(/disiscriviti/i) : [footerText]
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -171,7 +169,7 @@ export default function NewsletterForm({
     <section className={['w-full py-16 sm:py-20', className].join(' ')}>
       <div className="mx-auto w-full max-w-3xl px-6 text-center">
         <form onSubmit={onSubmit} className="mx-auto mt-8 w-full max-w-xl space-y-4 text-left">
-          <div className="flex gap-4">
+          <div className="flex md:flex-row flex-col gap-4">
             <label className="sr-only" htmlFor={`${uid}-email`}>
               Email
             </label>
@@ -196,7 +194,7 @@ export default function NewsletterForm({
               type="submit"
               disabled={disabled}
               className={[
-                'h-11 w-full rounded-md bg-dark text-sm font-medium text-white max-w-53',
+                'h-11 w-full rounded-md bg-dark text-sm font-medium text-white md:max-w-50 ',
                 'transition-opacity hover:opacity-90 disabled:opacity-60',
               ].join(' ')}
             >
@@ -236,13 +234,17 @@ export default function NewsletterForm({
           </DorianteText>
         ) : null}
         <div className="mt-10">
-          <DorianteText color="dark" align="center">
+          <DorianteText
+            color="dark"
+            align="center"
+            className="doriante-text text-dark font-semibold"
+          >
             {hasUnsubscribeWord ? (
               <>
                 {unsubscribeTextParts[0]}
                 <button
                   type="button"
-                  className="underline underline-offset-2"
+                  className="underline underline-offset-2 "
                   onClick={() => {
                     setUnsubscribeMessage(null)
                     setUnsubscribeEmail(email.trim().toLowerCase())
@@ -258,7 +260,6 @@ export default function NewsletterForm({
             )}
           </DorianteText>
         </div>
-
         {isUnsubscribeModalOpen ? (
           <UnsubscribedModal
             uid={uid}

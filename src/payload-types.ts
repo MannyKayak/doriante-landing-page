@@ -506,10 +506,13 @@ export interface Footer {
     };
     socials: {
       cta: string;
-      instagram?: string | null;
-      facebook?: string | null;
-      linkedin?: string | null;
-      tiktok?: string | null;
+      items?:
+        | {
+            platform: 'instagram' | 'facebook' | 'linkedin' | 'tiktok';
+            url: string;
+            id?: string | null;
+          }[]
+        | null;
     };
     copyright: string;
     text: string;
@@ -654,10 +657,13 @@ export interface FooterSelect<T extends boolean = true> {
           | T
           | {
               cta?: T;
-              instagram?: T;
-              facebook?: T;
-              linkedin?: T;
-              tiktok?: T;
+              items?:
+                | T
+                | {
+                    platform?: T;
+                    url?: T;
+                    id?: T;
+                  };
             };
         copyright?: T;
         text?: T;

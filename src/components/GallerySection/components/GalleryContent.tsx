@@ -56,11 +56,11 @@ const GalleryContent = ({
           </DorianteTitle>
         </div>
 
-        <DorianteTitle tag="h1" className="!text-[64px] text-light pt-4">
+        <DorianteTitle tag="h1" className="sm:!text-[64px] text-light pt-4">
           {subtitle}
         </DorianteTitle>
         <div className="mt-8">
-          <DorianteText className="text-white text-xl text-left doriante-text font-semibold mt-8">
+          <DorianteText className="text-white sm:text-xl text-md text-left doriante-text font-semibold mt-8">
             {description}
           </DorianteText>
         </div>

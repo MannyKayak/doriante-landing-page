@@ -10,16 +10,14 @@
   background: var(--color-light) !important; /* dorato Doriante */
   width: 14px !important;
   height: 14px !important;
-  padding-bottom: 10px !important;
   opacity: 1 !important;
 }
 
 .doriante-swiper .swiper-pagination {
-  position: relative;
-  bottom: auto;
+  position: static !important;
   display: flex;
   justify-content: center;
-  transform: translateY(-20px);
+  margin-top: 16px;
 }
 .doriante-swiper,
 .doriante-swiper .swiper-wrapper,

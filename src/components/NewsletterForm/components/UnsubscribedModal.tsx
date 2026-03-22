@@ -73,7 +73,7 @@ export default function UnsubscribedModal({
         </form>
 
         {unsubscribeMessage ? (
-          <p className="mt-3 text-sm text-red-900/80" aria-live="polite">
+          <p className="mt-3 text-sm pt-4 text-red-900/80" aria-live="polite">
             {unsubscribeMessage}
           </p>
         ) : null}

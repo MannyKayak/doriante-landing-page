@@ -1,5 +1,12 @@
 import { GlobalConfig } from 'payload'
 
+const SOCIAL_OPTIONS = [
+  { label: 'Instagram', value: 'instagram' },
+  { label: 'Facebook', value: 'facebook' },
+  { label: 'LinkedIn', value: 'linkedin' },
+  { label: 'TikTok', value: 'tiktok' },
+] as const
+
 export const Footer: GlobalConfig = {
   slug: 'footer',
   label: 'Footer',
@@ -66,32 +73,43 @@ export const Footer: GlobalConfig = {
               required: true,
             },
             {
-              name: 'instagram',
-              type: 'text',
-              label: 'Instagram Label',
-              localized: true,
-              defaultValue: 'Instagram',
-            },
-            {
-              name: 'facebook',
-              type: 'text',
-              label: 'Facebook Label',
-              localized: true,
-              defaultValue: 'Facebook',
-            },
-            {
-              name: 'linkedin',
-              type: 'text',
-              label: 'LinkedIn Label',
-              localized: true,
-              defaultValue: 'LinkedIn',
-            },
-            {
-              name: 'tiktok',
-              type: 'text',
-              label: 'TikTok Label',
-              localized: true,
-              defaultValue: 'TikTok',
+              name: 'items',
+              type: 'array',
+              label: 'Social Links',
+              labels: {
+                singular: 'Social Link',
+                plural: 'Social Links',
+              },
+              validate: (value) => {
+                if (!Array.isArray(value) || value.length === 0) return true
+
+                const items = value as Array<{ platform?: string | null }>
+                const platforms = items
+                  .map((item) => item.platform)
+                  .filter((platform): platform is string => Boolean(platform))
+
+                return new Set(platforms).size === platforms.length
+                  ? true
+                  : 'Puoi inserire ogni social una sola volta.'
+              },
+              fields: [
+                {
+                  name: 'platform',
+                  type: 'select',
+                  label: 'Social',
+                  required: true,
+                  options: SOCIAL_OPTIONS.map((option) => ({
+                    label: option.label,
+                    value: option.value,
+                  })),
+                },
+                {
+                  name: 'url',
+                  type: 'text',
+                  label: 'Social URL',
+                  required: true,
+                },
+              ],
             },
           ],
         },

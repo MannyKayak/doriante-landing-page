@@ -13,16 +13,22 @@ export const ActivityCard: React.FC<{
   image: string | Media
 }> = ({ cardtitle, cardDescription, image }) => {
   return (
-    <div className="h-full w-full overflow-hidden rounded-3xl bg-gray">
-      <div className="relative w-full aspect-[4/5] overflow-hidden">
+    <div className="flex h-full w-full flex-col overflow-hidden rounded-3xl bg-gray">
+      <div className="relative w-full aspect-[4/4.6] overflow-hidden sm:aspect-[4/5]">
         <DorianteImage fill use="mini-card" src={getUrlFromMedia(image)} alt={cardtitle} />
       </div>
 
-      <div className="flex flex-col items-start gap-2 p-3 sm:p-6">
+      <div className="flex flex-1 flex-col items-start gap-2 p-3 sm:p-6">
         <DorianteTitle tag="h4" color="dark" className="line-clamp-2 text-dark !text-base sm:!text-xl">
           {cardtitle}
         </DorianteTitle>
-        <DorianteText size="base" color="dark" align="left" inline className="!text-xs sm:!text-base">
+        <DorianteText
+          size="base"
+          color="dark"
+          align="left"
+          inline
+          className="line-clamp-3 !text-xs sm:!text-base"
+        >
           {cardDescription}
         </DorianteText>
       </div>

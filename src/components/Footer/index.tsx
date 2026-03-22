@@ -8,6 +8,13 @@ import InstagramIcon from '@/assets/InstagramIcon'
 import { Footer as FooterType } from '@/payload-types'
 import Link from 'next/link'
 
+const SOCIAL_ICONS = {
+  instagram: InstagramIcon,
+  facebook: FbIcon,
+  linkedin: LinkedinIcon,
+  tiktok: TikTokIcon,
+} as const
+
 type FooterProps = {
   className?: string
   data: FooterType
@@ -15,6 +22,11 @@ type FooterProps = {
 
 export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
   const footer = data.footer
+  const socialItems =
+    footer?.socials?.items?.filter(
+      (item): item is NonNullable<typeof footer.socials.items>[number] =>
+        Boolean(item?.platform && item?.url),
+    ) ?? []
 
   if (!footer) return null
 
@@ -48,12 +60,12 @@ export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
               {footer.contacts?.phone && (
                 <li>
                   <DorianteText className="doriante-text text-dark arial pt-2 ">
-                    <a
+                    <Link
                       href={`tel:${footer.contacts.phone}`}
                       className="hover:text-black transition"
                     >
                       {footer.contacts.phone}
-                    </a>
+                    </Link>
                   </DorianteText>
                 </li>
               )}
@@ -61,9 +73,9 @@ export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
               {footer.contacts?.email && (
                 <li>
                   <DorianteText className="doriante-text text-dark arial pt-2 ">
-                    <a href={`mailto:${footer.contacts.email}`} className=" transition">
+                    <Link href={`mailto:${footer.contacts.email}`} className=" transition">
                       {footer.contacts.email}
-                    </a>
+                    </Link>
                   </DorianteText>
                 </li>
               )}
@@ -78,18 +90,34 @@ export const Footer: React.FC<FooterProps> = ({ className = '', data }) => {
           </div>
 
           {/* SOCIAL */}
-          <div>
-            <DorianteText className="doriante-text text-dark arial sm:py-0 py-2">
-              {footer.socials?.cta}
-            </DorianteText>
+          {socialItems.length > 0 ? (
+            <div>
+              <DorianteText className="doriante-text text-dark arial sm:py-0 py-2">
+                {footer.socials?.cta}
+              </DorianteText>
 
-            <div className="flex items-center gap-6 text-black pt-2">
-              <InstagramIcon />
-              <FbIcon />
-              <TikTokIcon />
-              <LinkedinIcon />
+              <div className="flex items-center gap-6 text-black pt-2">
+                {socialItems.map((item) => {
+                  const Icon = SOCIAL_ICONS[item.platform]
+
+                  if (!Icon) return null
+
+                  return (
+                    <a
+                      key={`${item.platform}-${item.url}`}
+                      href={item.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={item.platform}
+                      className="transition-opacity hover:opacity-70"
+                    >
+                      <Icon />
+                    </a>
+                  )
+                })}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
 
         {/* Bottom */}

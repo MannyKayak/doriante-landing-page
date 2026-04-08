@@ -49,8 +49,49 @@ export default function NewsletterForm({
   const [isUnsubscribing, setIsUnsubscribing] = useState(false)
 
   const disabled = useMemo(() => status === 'loading' || isUnsubscribing, [status, isUnsubscribing])
-  const hasUnsubscribeWord = footerText.toLowerCase().includes('disiscriviti')
-  const unsubscribeTextParts = hasUnsubscribeWord ? footerText.split(/disiscriviti/i) : [footerText]
+  const UNSUBSCRIBE_REGEX = /disiscriviti|unsubscribe/i
+  const unsubscribeMatch = footerText.match(UNSUBSCRIBE_REGEX)
+  const hasUnsubscribeWord = unsubscribeMatch !== null
+  const unsubscribeWord = unsubscribeMatch?.[0] ?? 'disiscriviti'
+  const unsubscribeTextParts = hasUnsubscribeWord ? footerText.split(UNSUBSCRIBE_REGEX) : [footerText]
+
+  const isEnglish = unsubscribeWord.toLowerCase() === 'unsubscribe'
+  const i18n = isEnglish
+    ? {
+        invalidEmail: 'Please enter a valid email.',
+        acceptPrivacy: 'You must accept the privacy policy to subscribe.',
+        submitError: 'Unable to complete the subscription. Please try again later.',
+        alreadySubscribed: 'You are already subscribed.',
+        subscribeSuccess: 'Subscription completed.',
+        invalidUnsubscribeEmail: 'Please enter a valid email to unsubscribe.',
+        unsubscribeError: 'Unable to complete the unsubscription. Please try again.',
+        alreadyUnsubscribed: 'You are already unsubscribed.',
+        unsubscribeSuccess: 'Unsubscription completed.',
+        modal: {
+          title: 'Newsletter unsubscribe',
+          description: 'Enter the email you used to subscribe to confirm the unsubscription.',
+          submitIdle: 'Unsubscribe',
+          submitLoading: 'Sending...',
+        },
+      }
+    : {
+        invalidEmail: 'Inserisci una email valida.',
+        acceptPrivacy: 'Devi accettare la privacy policy per iscriverti',
+        submitError: "Impossibile completare l'iscrizione. Riprova piu tardi.",
+        alreadySubscribed: 'Sei gia iscritto.',
+        subscribeSuccess: 'Iscrizione completata.',
+        invalidUnsubscribeEmail: 'Inserisci una email valida prima di disiscriverti.',
+        unsubscribeError: 'Impossibile completare la disiscrizione. Riprova.',
+        alreadyUnsubscribed: 'Sei gia disiscritto.',
+        unsubscribeSuccess: 'Disiscrizione completata.',
+        modal: {
+          title: 'Disiscrizione newsletter',
+          description:
+            "Inserisci l'email con cui ti sei iscritto per confermare la disiscrizione.",
+          submitIdle: 'Disinscriviti',
+          submitLoading: 'Invio...',
+        },
+      }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -59,13 +100,13 @@ export default function NewsletterForm({
     const normalizedEmail = email.trim().toLowerCase()
     if (!normalizedEmail || !EMAIL_REGEX.test(normalizedEmail)) {
       setStatus('error')
-      setMessage('Inserisci una email valida.')
+      setMessage(i18n.invalidEmail)
       return
     }
 
     if (!consent) {
       setStatus('error')
-      setMessage('Devi accettare la privacy policy per iscriverti')
+      setMessage(i18n.acceptPrivacy)
       return
     }
 
@@ -88,23 +129,17 @@ export default function NewsletterForm({
 
       if (!response.ok) {
         setStatus('error')
-        setMessage(
-          payload?.message ||
-            payload?.errors?.[0]?.message ||
-            "Impossibile completare l'iscrizione. Riprova piu tardi.",
-        )
+        setMessage(payload?.message || payload?.errors?.[0]?.message || i18n.submitError)
         return
       }
 
       setStatus('success')
-      setMessage(
-        payload?.code === 'ALREADY_SUBSCRIBED' ? 'Sei gia iscritto.' : 'Iscrizione completata.',
-      )
+      setMessage(payload?.code === 'ALREADY_SUBSCRIBED' ? i18n.alreadySubscribed : i18n.subscribeSuccess)
       setEmail('')
       setConsent(false)
     } catch {
       setStatus('error')
-      setMessage("Impossibile completare l'iscrizione. Riprova piu tardi.")
+      setMessage(i18n.submitError)
     }
   }
 
@@ -114,7 +149,7 @@ export default function NewsletterForm({
 
     const normalizedUnsubscribeEmail = unsubscribeEmail.trim().toLowerCase()
     if (!normalizedUnsubscribeEmail || !EMAIL_REGEX.test(normalizedUnsubscribeEmail)) {
-      setUnsubscribeMessage('Inserisci una email valida prima di disiscriverti.')
+      setUnsubscribeMessage(i18n.invalidUnsubscribeEmail)
       return
     }
 
@@ -136,24 +171,22 @@ export default function NewsletterForm({
 
       if (!response.ok) {
         setUnsubscribeMessage(
-          payload?.message ||
-            payload?.errors?.[0]?.message ||
-            'Impossibile completare la disiscrizione. Riprova.',
+          payload?.message || payload?.errors?.[0]?.message || i18n.unsubscribeError,
         )
         return
       }
 
       if (payload?.code === 'ALREADY_UNSUBSCRIBED') {
-        setUnsubscribeMessage('Sei gia disiscritto.')
+        setUnsubscribeMessage(i18n.alreadyUnsubscribed)
         return
       }
 
       setIsUnsubscribeModalOpen(false)
       setUnsubscribeEmail('')
       setStatus('success')
-      setMessage('Disiscrizione completata.')
+      setMessage(i18n.unsubscribeSuccess)
     } catch {
-      setUnsubscribeMessage('Impossibile completare la disiscrizione. Riprova.')
+      setUnsubscribeMessage(i18n.unsubscribeError)
     } finally {
       setIsUnsubscribing(false)
     }
@@ -251,7 +284,7 @@ export default function NewsletterForm({
                     setIsUnsubscribeModalOpen(true)
                   }}
                 >
-                  disiscriviti
+                  {unsubscribeWord}
                 </button>
                 {unsubscribeTextParts.slice(1).join('disiscriviti')}
               </>
@@ -269,6 +302,7 @@ export default function NewsletterForm({
             onClose={closeUnsubscribeModal}
             onEmailChange={setUnsubscribeEmail}
             onSubmit={onUnsubscribe}
+            labels={i18n.modal}
           />
         ) : null}
       </div>

@@ -10,6 +10,12 @@ type Props = {
   onClose: () => void
   onEmailChange: (value: string) => void
   onSubmit: (event: FormEvent<HTMLFormElement>) => void
+  labels: {
+    title: string
+    description: string
+    submitIdle: string
+    submitLoading: string
+  }
 }
 
 export default function UnsubscribedModal({
@@ -20,6 +26,7 @@ export default function UnsubscribedModal({
   onClose,
   onEmailChange,
   onSubmit,
+  labels,
 }: Props) {
   return (
     <div
@@ -31,12 +38,11 @@ export default function UnsubscribedModal({
         onClick={(event) => event.stopPropagation()}
       >
         <DorianteTitle tag="h4" className="text-lg font-medium text-dark">
-          Disiscrizione newsletter
+          {labels.title}
         </DorianteTitle>
         <div className="mt-4">
           <DorianteText color="dark" size="lg" weight="normal">
-            Inserisci l&apos;<strong>email</strong> con cui ti sei iscritto per confermare la
-            disiscrizione.
+            {labels.description}
           </DorianteText>
         </div>
 
@@ -68,7 +74,7 @@ export default function UnsubscribedModal({
               'transition-opacity hover:opacity-90 disabled:opacity-60',
             ].join(' ')}
           >
-            {isUnsubscribing ? 'Invio...' : 'Disinscriviti'}
+            {isUnsubscribing ? labels.submitLoading : labels.submitIdle}
           </button>
         </form>
 

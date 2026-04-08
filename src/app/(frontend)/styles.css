@@ -17,6 +17,13 @@ html {
   scrollbar-width: none;
   -ms-overflow-style: none;
   overflow: auto;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 html::-webkit-scrollbar,

@@ -8,6 +8,6 @@
   left: 50% !important;
   transform: translateX(-50%) !important;
 
-  bottom: 0 !important;
+  bottom: -8px !important;
   top: auto !important;
 }

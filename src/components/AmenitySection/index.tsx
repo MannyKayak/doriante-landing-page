@@ -21,7 +21,7 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
   if (!cards?.length) return null
 
   return (
-    <DorianteSection className="w-full px-4 pt-4 pb-8 md:px-6">
+    <DorianteSection id="amenità" className="w-full scroll-mt-24 px-4 pt-4 pb-8 md:px-6">
       {/* Header */}
       <header className="mx-auto mb-10 flex w-full max-w-6xl flex-col items-start gap-3 text-left md:items-center md:text-center">
         <div className="flex items-center w-full gap-4">

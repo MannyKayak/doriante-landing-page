@@ -36,7 +36,7 @@ export default function NewsletterForm({
   className = '',
   privacyHref = '',
   endpoint = '/api/newsletter/subscribe',
-  footerText = 'Ci teniamo alla tua privacy disinscriviti quando vuoi',
+  footerText = 'Ci teniamo alla tua privacy disiscriviti quando vuoi',
 }: Props) {
   const uid = useId()
   const [email, setEmail] = useState('')
@@ -251,9 +251,9 @@ export default function NewsletterForm({
                     setIsUnsubscribeModalOpen(true)
                   }}
                 >
-                  disinscriviti
+                  disiscriviti
                 </button>
-                {unsubscribeTextParts.slice(1).join('disinscriviti')}
+                {unsubscribeTextParts.slice(1).join('disiscriviti')}
               </>
             ) : (
               footerText

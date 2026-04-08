@@ -19,7 +19,11 @@ export const ActivityCard: React.FC<{
       </div>
 
       <div className="flex flex-1 flex-col items-start gap-2 p-3 sm:p-6">
-        <DorianteTitle tag="h4" color="dark" className="line-clamp-2 text-dark !text-base sm:!text-xl">
+        <DorianteTitle
+          tag="h4"
+          color="dark"
+          className="line-clamp-2 text-dark !text-base sm:!text-xl"
+        >
           {cardtitle}
         </DorianteTitle>
         <DorianteText
@@ -27,7 +31,7 @@ export const ActivityCard: React.FC<{
           color="dark"
           align="left"
           inline
-          className="line-clamp-3 !text-xs sm:!text-base"
+          className="line-clamp-3 !text-xs text-dark sm:!text-base"
         >
           {cardDescription}
         </DorianteText>

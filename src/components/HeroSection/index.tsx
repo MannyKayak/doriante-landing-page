@@ -14,7 +14,7 @@ export const HeroSection: React.FC<HeroSectionProps> = async ({
   const backgroundImageUrl = getUrlFromMedia(backgroundImage)
 
   return (
-    <DorianteSection className="relative min-h-screen">
+    <DorianteSection className="relative min-h-[100svh] md:min-h-screen">
       {/* Background */}
       <div className="z-0">
         {backgroundImageUrl ? (
@@ -25,7 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = async ({
       </div>
 
       {/* Content */}
-      <div className="relative flex max-w-2xl flex-col mt-52">
+      <div className="relative mt-28 flex max-w-2xl flex-col sm:mt-36 md:mt-52">
         <DorianteTitle color="dark" tag="h1" className="text-dark">
           {heading || 'Welcome to Doriante'}
         </DorianteTitle>

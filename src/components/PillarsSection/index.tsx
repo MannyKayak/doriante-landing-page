@@ -18,7 +18,7 @@ export const PillarsSection: FC<PillarsSectionProps> = ({ items }): JSX.Element 
           slidesPerView={1}
           spaceBetween={16}
           pagination={{ clickable: true, type: 'progressbar' }}
-          className="pb-4  h-32 "
+          className="pb-6 h-32"
         >
           {items &&
             items.map((item) => (
@@ -36,12 +36,13 @@ export const PillarsSection: FC<PillarsSectionProps> = ({ items }): JSX.Element 
       <div className="hidden md:flex justify-around gap-8">
         {items &&
           items.map((item) => (
-            <ExperienceCard
-              key={item.id}
-              title={item.title}
-              description={item.subtitle}
-              anchorId={item.anchorId}
-            />
+            <div key={item.id} className="flex flex-1">
+              <ExperienceCard
+                title={item.title}
+                description={item.subtitle}
+                anchorId={item.anchorId}
+              />
+            </div>
           ))}
       </div>
     </DorianteSection>

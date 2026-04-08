@@ -13,14 +13,21 @@
 }
 
 .doriante-swiper .swiper-pagination {
-  position: relative !important;
+  position: absolute !important;
   display: flex;
   justify-content: center;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100%;
 }
 .doriante-swiper,
 .doriante-swiper .swiper-wrapper,
 .doriante-swiper .swiper-slide {
   height: 98%;
+}
+
+.doriante-swiper {
+  padding-bottom: 28px;
 }
 
 .section-title {

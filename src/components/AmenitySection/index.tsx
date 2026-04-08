@@ -43,7 +43,7 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
         </div>
       </header>
 
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <Swiper
           modules={[Pagination]}
           slidesPerView="auto"
@@ -59,11 +59,11 @@ export const AmenitySection: FC<ActivitySectionProps> = ({
         </Swiper>
       </div>
 
-      <div className="hidden w-full flex-nowrap items-stretch gap-6 md:flex">
+      <div className="hidden w-full flex-nowrap items-stretch gap-6 lg:flex">
         {cards.map((item) => (
           <div
             key={item.id}
-            className="flex md:min-w-40 lg:min-w-50 xl:min-w-60 aspect-[3/5] flex-1"
+            className="flex flex-1"
           >
             <ActivityCard {...item} />
           </div>

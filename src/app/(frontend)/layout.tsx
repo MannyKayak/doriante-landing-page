@@ -10,7 +10,7 @@ import { getCurrentLocale } from '@/utils/i18n/locale'
 
 export const metadata = {
   description:
-    'Doriante è un progetto editoriale indipendente che nasce con l’obiettivo di esplorare e raccontare le connessioni tra cibo, cultura e società. Attraverso articoli, interviste e approfondimenti, Doriante si propone di offrire una prospettiva unica e stimolante sul mondo del cibo, andando oltre la semplice gastronomia per indagare le sue implicazioni culturali, sociali ed economiche.',
+    ' Doriante is a boutique retreat in Ameno, in the hills of Lake Orta: five charming suites blending art, design, nature, and refined hospitality.',
   title: 'DORIANTE',
   icon: '/assets/images/favicon.png',
 }
